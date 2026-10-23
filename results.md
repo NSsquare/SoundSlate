@@ -19,6 +19,7 @@ number and label in the output with the image myself. I only record what I check
 - Run 4: confidence note now warns about similar colors, but not about P012 specifically.
 - Output changes from run to run, even for the same image.
 - Output once contradicted itself: trend calls P012 an exception, key_values gives it the Moraxella pattern.
+- Run 5 (via /describe endpoint, 200 OK): legend count wrong (said 16, actual 15); P012 not mentioned; P004 omitted from Moraxella-dominated list; P006, P009 values correct; confidence note warns about similar colors.
 
 ## Still to test
 
