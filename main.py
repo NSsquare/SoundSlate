@@ -1,3 +1,5 @@
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi.responses import FileResponse
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from describer import describe_image, AllModelsBusy
@@ -14,16 +16,22 @@ app.add_middleware(
 
 ALLOWED_TYPES = {"image/png", "image/jpeg", "image/webp"}
 MAX_BYTES = 8 * 1024 * 1024  # 8 MB
+ALLOWED_LANGUAGES = {"en", "hi"}
 
 
 @app.get("/")
 def home():
     return {"message": "SoundSlate is running"}
-
+@app.get("/app")
+def web_page():
+    # Serve the student-facing page
+    return FileResponse("index.html")
 
 @app.post("/describe")
-def describe(file: UploadFile = File(...)):
+def describe(file: UploadFile = File(...), language: str = Form("en")):
     # 1. Check the file type
+    if language not in ALLOWED_LANGUAGES:
+        raise HTTPException(status_code=400, detail="Unsupported language.")
     if file.content_type not in ALLOWED_TYPES:
         raise HTTPException(
             status_code=400, detail="Please upload a PNG, JPEG or WebP image."
@@ -38,7 +46,7 @@ def describe(file: UploadFile = File(...)):
 
     # 3. Ask Gemini, and turn failures into friendly errors
     try:
-        model_used, result = describe_image(image_bytes, file.content_type)
+        model_used, result = describe_image(image_bytes, file.content_type, language)
     except AllModelsBusy:
         raise HTTPException(
             status_code=503,

@@ -43,13 +43,26 @@ class AllModelsBusy(Exception):
     pass
 
 
-def ask(model_name, image_bytes, mime_type):
+def build_prompt(language):
+    # English uses the base prompt; Hindi adds extra instructions
+    if language == "en":
+        return PROMPT
+    return PROMPT + (
+        " Write summary, details, key value labels and values, trend and "
+        "confidence_notes in simple, clear Hindi using Devanagari script. "
+        "Write estimates with the Hindi word for 'about' (लगभग). "
+        "Keep numbers, IDs and scientific or technical names exactly as shown in the image. "
+        "Keep image_type as one of the English codes listed."
+    )
+
+
+def ask(model_name, image_bytes, mime_type, prompt):
     # Send one image to one model and return the parsed description (or None)
     response = client.models.generate_content(
         model=model_name,
         contents=[
             types.Part.from_bytes(data=image_bytes, mime_type=mime_type),
-            PROMPT,
+            prompt,
         ],
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -59,12 +72,13 @@ def ask(model_name, image_bytes, mime_type):
     return response.parsed
 
 
-def describe_image(image_bytes, mime_type):
+def describe_image(image_bytes, mime_type, language="en"):
     # Try each model up to 2 times; return (model name, description)
+    prompt = build_prompt(language)
     for name in MODELS:
         for attempt in range(1, 3):
             try:
-                result = ask(name, image_bytes, mime_type)
+                result = ask(name, image_bytes, mime_type, prompt)
                 if result is None:
                     print(f"{name} replied in the wrong format, trying the next model")
                     break
