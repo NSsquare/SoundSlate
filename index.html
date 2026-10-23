@@ -1,72 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night" data-font="standard">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SoundSlate</title>
+    <title>SoundSlate: hear any chart, diagram or handwritten note</title>
     <style>
-        :root {
-            --bg: #0b0b0b;
+        :root[data-theme="night"] {
+            --bg: #000000;
             --fg: #ffffff;
+            --muted: #d0d0d0;
             --accent: #ffd400;
-            --card: #1a1a1a;
+            --btn-fg: #000000;
+            --card: #141414;
+            --border: #555555;
+            --focus: #00e5ff;
+        }
+
+        :root[data-theme="sunshine"] {
+            --bg: #ffe600;
+            --fg: #000000;
+            --muted: #1a1a1a;
+            --accent: #000000;
+            --btn-fg: #ffe600;
+            --card: #fff7b3;
+            --border: #000000;
+            --focus: #0000d6;
+        }
+
+        :root[data-theme="paper"] {
+            --bg: #ffffff;
+            --fg: #000000;
+            --muted: #333333;
+            --accent: #0033a0;
+            --btn-fg: #ffffff;
+            --card: #eef2fa;
+            --border: #4a5a80;
+            --focus: #c2410c;
+        }
+
+        :root[data-theme="navy"] {
+            --bg: #00205b;
+            --fg: #ffffff;
+            --muted: #dbe6ff;
+            --accent: #ffd400;
+            --btn-fg: #000000;
+            --card: #0a3a8f;
+            --border: #8fb0ff;
+            --focus: #00e5ff;
+        }
+
+        :root[data-theme="matrix"] {
+            --bg: #000000;
+            --fg: #39ff14;
+            --muted: #9dff8a;
+            --accent: #39ff14;
+            --btn-fg: #000000;
+            --card: #0b1a0b;
+            --border: #39ff14;
+            --focus: #ff00ff;
+        }
+
+        :root[data-theme="cream"] {
+            --bg: #fdf6e3;
+            --fg: #1f1f1f;
+            --muted: #444444;
+            --accent: #7a2e00;
+            --btn-fg: #ffffff;
+            --card: #f3e9cf;
+            --border: #a08a5a;
+            --focus: #0b3d91;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            font-size: 1.25rem;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2rem;
             line-height: 1.6;
             background: var(--bg);
             color: var(--fg);
         }
 
-        main {
-            max-width: 760px;
+        body.voice-on {
+            padding-bottom: 15rem;
+        }
+
+        :root[data-font="easy"] body {
+            font-family: Verdana, Tahoma, sans-serif;
+            letter-spacing: .03em;
+            word-spacing: .12em;
+            line-height: 1.85;
+        }
+
+        .skip {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+        }
+
+        .skip:focus {
+            left: 1rem;
+            top: 1rem;
+            z-index: 30;
+            background: var(--accent);
+            color: var(--btn-fg);
+            padding: .6rem 1rem;
+            border-radius: 8px;
+        }
+
+        header {
+            border-bottom: 3px solid var(--border);
+        }
+
+        .wrap {
+            max-width: 860px;
             margin: 0 auto;
-            padding: 1.5rem;
+            padding: 1rem 1.25rem;
+        }
+
+        header .wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-end;
+            justify-content: space-between;
         }
 
         h1 {
-            font-size: 2.2rem;
-            margin-bottom: .25rem;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .tagline {
+            margin: .2rem 0 0;
+            color: var(--muted);
+            font-size: 1.05rem;
         }
 
         h2 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--accent);
-            margin-bottom: .3rem;
+            margin: 1.2rem 0 .3rem;
+        }
+
+        .card {
+            background: var(--card);
+            border: 3px solid var(--border);
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            margin: 1.2rem 0;
+        }
+
+        .card>h2:first-child {
+            margin-top: 0;
         }
 
         label {
             display: block;
             margin-top: 1rem;
+            font-weight: bold;
         }
 
-        input[type=file] {
+        .check {
+            display: flex;
+            gap: .6rem;
+            align-items: center;
+            font-weight: normal;
+        }
+
+        input[type=checkbox] {
+            width: 1.4rem;
+            height: 1.4rem;
+            accent-color: var(--accent);
+        }
+
+        input[type=file],
+        input[type=text],
+        select {
             display: block;
             width: 100%;
-            margin: .6rem 0;
-            color: var(--fg);
+            font: inherit;
             font-size: 1.1rem;
+            padding: .6rem;
+            margin-top: .4rem;
+            border: 3px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--fg);
         }
 
-        select {
-            font-size: 1.2rem;
-            padding: .5rem;
-            margin: .4rem 0;
+        header select {
+            width: auto;
+            min-width: 14rem;
         }
 
         button {
-            font-size: 1.25rem;
+            font: inherit;
             font-weight: bold;
             background: var(--accent);
-            color: #000;
+            color: var(--btn-fg);
             border: 3px solid var(--accent);
             border-radius: 10px;
-            padding: .8rem 1.2rem;
-            margin: .4rem .4rem .4rem 0;
+            padding: .7rem 1.1rem;
+            margin: .35rem .4rem .35rem 0;
             cursor: pointer;
         }
 
@@ -75,68 +219,376 @@
             color: var(--accent);
         }
 
+        button.small-btn {
+            font-size: 1rem;
+            padding: .45rem .8rem;
+        }
+
+        button.big {
+            font-size: 1.35rem;
+            padding: .9rem 1.6rem;
+        }
+
         button:disabled {
             opacity: .5;
             cursor: not-allowed;
         }
 
         :focus-visible {
-            outline: 4px solid #00e5ff;
+            outline: 5px solid var(--focus);
             outline-offset: 3px;
         }
 
-        #status {
-            min-height: 1.6em;
+        .small {
+            font-size: 1rem;
+            color: var(--muted);
+        }
+
+        #statusRow {
+            min-height: 2rem;
             font-weight: bold;
             color: var(--accent);
         }
 
+        .spinner {
+            display: inline-block;
+            width: 1.2rem;
+            height: 1.2rem;
+            margin-right: .5rem;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            vertical-align: middle;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         #preview {
-            display: none;
+            display: block;
             max-width: 100%;
             max-height: 260px;
             margin-top: 1rem;
             border-radius: 8px;
+            border: 3px solid var(--border);
         }
 
-        #result {
-            display: none;
-            background: var(--card);
+        video {
+            display: block;
+            width: 100%;
+            max-height: 380px;
+            background: #000;
             border-radius: 10px;
-            padding: 1rem 1.2rem;
-            margin-top: 1rem;
+            margin-top: .6rem;
+        }
+
+        ul {
+            padding-left: 1.4rem;
+        }
+
+        li {
+            margin: .3rem 0;
+        }
+
+        details {
+            margin-top: .8rem;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            padding: .4rem 0;
+        }
+
+        .chips {
+            margin-top: .4rem;
+        }
+
+        .qa {
+            border-left: 6px solid var(--accent);
+            padding: .2rem 1rem;
+            margin: .9rem 0;
+        }
+
+        .qa p {
+            margin: .3rem 0;
+        }
+
+        /* ----- voice status bar (fixed to the bottom of the screen) ----- */
+        #voiceBar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 20;
+            background: var(--bg);
+            color: var(--fg);
+            border-top: 8px solid var(--accent);
+            padding: .8rem 1.25rem 1rem;
+        }
+
+        #voiceBar[data-state="starting"] {
+            border-top-style: dotted;
+        }
+
+        #voiceBar[data-state="on"] {
+            border-top-style: dashed;
+        }
+
+        #voiceBar[data-state="hearing"] {
+            border-top-style: solid;
+        }
+
+        #voiceBar[data-state="busy"] {
+            border-top-style: dotted;
+        }
+
+        #voiceBar[data-state="error"] {
+            border-top-style: double;
+            border-top-width: 12px;
+        }
+
+        .vwrap {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .vtext {
+            flex: 1 1 18rem;
+            min-width: 0;
+        }
+
+        .vstate {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .vheard {
+            margin: .2rem 0;
+            font-size: 1.3rem;
+            min-height: 1.6em;
+            overflow-wrap: anywhere;
+        }
+
+        .bars {
+            display: flex;
+            gap: 5px;
+            align-items: flex-end;
+            height: 3.2rem;
+            width: 3.4rem;
+        }
+
+        .bars span {
+            width: 10px;
+            height: 30%;
+            background: var(--accent);
+            border-radius: 4px;
+            opacity: .45;
+        }
+
+        #voiceBar[data-state="hearing"] .bars span {
+            opacity: 1;
+            animation: bounce .55s ease-in-out infinite alternate;
+        }
+
+        .bars span:nth-child(2) {
+            animation-delay: .1s;
+        }
+
+        .bars span:nth-child(3) {
+            animation-delay: .2s;
+        }
+
+        .bars span:nth-child(4) {
+            animation-delay: .3s;
+        }
+
+        .bars span:nth-child(5) {
+            animation-delay: .4s;
+        }
+
+        @keyframes bounce {
+            from {
+                height: 25%;
+            }
+
+            to {
+                height: 100%;
+            }
+        }
+
+        meter {
+            width: 100%;
+            height: 1.1rem;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .spinner {
+                animation: none;
+            }
+
+            #voiceBar[data-state="hearing"] .bars span {
+                animation: none;
+                height: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <main>
-        <h1>SoundSlate</h1>
-        <p>Choose a photo of a chart, diagram or handwritten page. SoundSlate describes it aloud.</p>
+    <a class="skip" href="#main">Skip to main content</a>
 
-        <label for="file">Choose an image or take a photo</label>
-        <input id="file" type="file" accept="image/png,image/jpeg,image/webp">
-
-        <label for="lang">Language of description</label>
-        <select id="lang">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी (Hindi)</option>
-        </select>
-
-        <label><input id="auto" type="checkbox" checked> Read results aloud automatically</label>
-
-        <button id="describeBtn">Describe image</button>
-        <p id="status" role="status" aria-live="polite"></p>
-
-        <img id="preview" alt="Preview of the image you selected">
-
-        <section id="result" aria-label="Description of your image">
-            <div role="group" aria-label="Listening controls">
-                <button id="repeatBtn">Repeat</button>
-                <button id="moreBtn">More detail</button>
-                <button id="allBtn" class="secondary">Read everything</button>
-                <button id="stopBtn" class="secondary">Stop</button>
+    <header>
+        <div class="wrap">
+            <div>
+                <h1>SoundSlate</h1>
+                <p class="tagline">Hear any chart, diagram or handwritten note. Then ask questions about it.</p>
             </div>
+            <div>
+                <label for="theme" style="margin-top:0">Colour theme</label>
+                <select id="theme">
+                    <option value="night">Night yellow (black background)</option>
+                    <option value="sunshine">Bright yellow (black text)</option>
+                    <option value="paper">High contrast white</option>
+                    <option value="navy">Navy and white</option>
+                    <option value="matrix">Green on black</option>
+                    <option value="cream">Soft cream (low glare)</option>
+                </select>
+                <div role="group" aria-label="Text size">
+                    <button id="smallerBtn" class="secondary small-btn" aria-label="Make text smaller">A&minus;</button>
+                    <button id="largerBtn" class="secondary small-btn" aria-label="Make text larger">A+</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="wrap" tabindex="-1">
+
+        <section class="card" aria-labelledby="s1">
+            <h2 id="s1">1. Add an image</h2>
+
+            <label for="file">Choose an image from your device</label>
+            <input id="file" type="file" accept="image/png,image/jpeg,image/webp">
+
+            <p><button id="cameraBtn">Open camera</button></p>
+            <input id="cameraFallback" type="file" accept="image/*" capture="environment" hidden>
+
+            <div id="cameraPanel" hidden>
+                <video id="video" autoplay playsinline muted aria-label="Live camera view"></video>
+                <button id="snapBtn" class="big">Take photo</button>
+                <button id="flipBtn" class="secondary">Switch camera</button>
+                <button id="closeCamBtn" class="secondary">Close camera</button>
+                <label class="check"><input id="countdown" type="checkbox" checked>
+                    Speak a 3-second countdown before the photo</label>
+            </div>
+
+            <img id="preview" alt="Preview of the image you selected" hidden>
+            <p class="small">Privacy: your image and questions are sent to Google's Gemini service, and
+                voice recognition in Chrome or Edge sends your speech to the browser maker's service.
+                Do not upload private or personal documents.</p>
+        </section>
+
+        <section class="card" aria-labelledby="s2">
+            <h2 id="s2">2. Describe it</h2>
+
+            <label for="lang">Language of description and answers</label>
+            <select id="lang">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+
+            <p><button id="describeBtn" class="big">Describe image</button></p>
+            <p id="statusRow">
+                <span id="spinner" class="spinner" aria-hidden="true" hidden></span>
+                <span id="status" role="status" aria-live="polite"></span>
+                <span id="timer" aria-hidden="true"></span>
+            </p>
+
+            <details>
+                <summary>More settings: speed, text style, voice and microphone test</summary>
+                <label for="rate">Speaking speed</label>
+                <select id="rate">
+                    <option value="0.8">Slow</option>
+                    <option value="1" selected>Normal</option>
+                    <option value="1.25">Fast</option>
+                    <option value="1.5">Very fast</option>
+                </select>
+                <label for="font">Text style</label>
+                <select id="font">
+                    <option value="standard">Standard</option>
+                    <option value="easy">Easy read (wider spacing)</option>
+                </select>
+                <label class="check"><input id="auto" type="checkbox" checked>
+                    Read the summary and answers aloud automatically</label>
+
+                <h2>Voice questions</h2>
+                <label for="voiceLang">Language you will speak</label>
+                <select id="voiceLang">
+                    <option value="auto">Same as the description language</option>
+                    <option value="en-IN">English (India)</option>
+                    <option value="en-US">English (US)</option>
+                    <option value="hi-IN">Hindi</option>
+                </select>
+                <label for="voiceMethod">Voice recognition method</label>
+                <select id="voiceMethod">
+                    <option value="auto">Automatic (browser first, Gemini as backup)</option>
+                    <option value="browser">Browser only (live text, fastest)</option>
+                    <option value="gemini">Gemini listens (works in more browsers, slower)</option>
+                </select>
+                <label class="check"><input id="readback" type="checkbox" checked>
+                    Repeat my question back before answering</label>
+                <p><button id="testMicBtn" class="secondary">Test microphone and voice recognition</button></p>
+            </details>
+        </section>
+
+        <section id="result" class="card" aria-labelledby="resultTitle" hidden>
+            <h2 id="resultTitle" tabindex="-1">Results</h2>
+
+            <div role="group" aria-label="Listening controls">
+                <button id="repeatBtn" aria-keyshortcuts="Alt+R">Repeat</button>
+                <button id="moreBtn" aria-keyshortcuts="Alt+M">More detail</button>
+                <button id="allBtn" class="secondary" aria-keyshortcuts="Alt+A">Read everything</button>
+                <button id="soundBtn" class="secondary" aria-keyshortcuts="Alt+H" hidden>Hear the chart as
+                    sound</button>
+                <button id="interruptBtn" aria-keyshortcuts="Alt+Q">Interrupt and ask</button>
+                <button id="continueBtn" class="secondary" aria-keyshortcuts="Alt+C" hidden>Continue reading</button>
+                <button id="stopBtn" class="secondary" aria-keyshortcuts="Alt+S">Stop</button>
+                <button id="copyBtn" class="secondary">Copy description</button>
+                <button id="saveBtn" class="secondary">Save study notes</button>
+            </div>
+            <p id="progress" class="small"></p>
+
+            <h2 id="askTitle">Ask a question about this image</h2>
+            <label for="question">Type your question</label>
+            <input id="question" type="text" maxlength="500" autocomplete="off">
+            <div>
+                <button id="askBtn">Ask</button>
+                <button id="listenBtn">Ask by voice</button>
+            </div>
+            <div class="chips" role="group" aria-label="Suggested questions">
+                <button class="chip secondary small-btn" data-q="Explain this in simpler words.">Explain simply</button>
+                <button class="chip secondary small-btn" data-q="What are the biggest and smallest values?">Biggest and
+                    smallest</button>
+                <button class="chip secondary small-btn"
+                    data-q="Describe the layout: where is everything on the image?">Describe the layout</button>
+                <button class="chip secondary small-btn"
+                    data-q="What is unclear or might be wrong in your description?">What might be wrong?</button>
+                <button class="chip secondary small-btn"
+                    data-q="Quiz me: ask me one question about this image to test my understanding, then wait for my answer.">Quiz
+                    me</button>
+            </div>
+            <div id="answers" aria-label="Your questions and answers"></div>
+
             <h2>Summary</h2>
             <p id="summary"></p>
             <h2>Details</h2>
@@ -147,54 +599,401 @@
             <p id="trend"></p>
             <h2>Confidence notes</h2>
             <p id="notes"></p>
+
+            <p class="small"><strong>Please note:</strong> AI descriptions and answers can contain mistakes.
+                For important numbers, check the original image or ask someone to confirm.</p>
+            <p id="modelUsed" class="small"></p>
         </section>
 
-        <p>Shortcuts: Alt+R repeat, Alt+M more detail, Alt+A read everything, Alt+S stop.</p>
+        <p class="small">Keyboard shortcuts: Alt+R repeat, Alt+M more detail, Alt+A read everything,
+            Alt+H hear the chart as sound, Alt+Q interrupt and ask by voice (press again when you finish),
+            Alt+C continue reading, Alt+S stop, Escape cancel.</p>
     </main>
+
+    <div id="voiceBar" role="group" aria-label="Voice input status" data-state="starting" hidden>
+        <div class="vwrap">
+            <div class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="vtext">
+                <p id="voiceState" class="vstate"></p>
+                <p id="voiceHeard" class="vheard"></p>
+                <meter id="level" min="0" max="1" value="0" aria-label="Microphone level"></meter>
+                <p id="voiceHint" class="small"></p>
+            </div>
+            <div>
+                <button id="vDone">Done speaking</button>
+                <button id="vCancel" class="secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         const $ = (id) => document.getElementById(id);
-        let queue = [];      // the pieces "More detail" reads one by one
-        let queuePos = 0;
-        let lastSpoken = "";
-        let summaryText = "";
-        let resultLang = "en";   // language of the description being read
+        let queue = [], queuePos = 0;
+        let lastSpoken = "", summaryText = "", resultLang = "en", lastResult = null;
+        let currentFile = null, previewUrl = null, timerId = null, size = 100;
+        let history = [];                        // question/answer pairs for follow-ups
+        let readChunks = [], readPos = 0, readToken = 0, readIsAnswer = false;
+        let resumeChunks = [], resumePos = null; // where "Continue reading" restarts
+        let camStream = null, facing = "environment";
+        let voice = null;                        // the active listening session, or null
+        let soundValues = [], soundCtx = null, soundTimers = [];
+        const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        // Remember settings between visits (wrapped, because storage can be blocked)
+        function store(k, v) { try { localStorage.setItem(k, v); } catch (e) { } }
+        function recall(k, d) { try { return localStorage.getItem(k) || d; } catch (e) { return d; } }
 
         function setStatus(msg) { $("status").textContent = msg; }
 
-        // Browsers load their voice list a moment after the page opens
-        if ("speechSynthesis" in window) {
-            window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+        // ---------- display settings ----------
+        function applyTheme(t) {
+            if (!["night", "sunshine", "paper", "navy", "matrix", "cream"].includes(t)) t = "night";
+            document.documentElement.dataset.theme = t;
+            $("theme").value = t;
+            store("theme", t);
+        }
+        function applyFont(f) {
+            if (f !== "easy") f = "standard";
+            document.documentElement.dataset.font = f;
+            $("font").value = f;
+            store("font", f);
+        }
+        function applySize(s, announce) {
+            size = Math.min(170, Math.max(80, s));
+            document.documentElement.style.fontSize = size + "%";
+            store("size", size);
+            if (announce) setStatus("Text size " + size + " percent.");
+        }
+        applyTheme(recall("theme", "night"));
+        applyFont(recall("font", "standard"));
+        applySize(parseInt(recall("size", "100"), 10) || 100, false);
+        $("lang").value = recall("lang", "en");
+        $("rate").value = recall("rate", "1");
+        $("voiceLang").value = recall("voiceLang", "auto");
+        $("voiceMethod").value = recall("voiceMethod", "auto");
+        $("auto").checked = recall("auto", "yes") === "yes";
+        $("readback").checked = recall("readback", "yes") === "yes";
+        $("countdown").checked = recall("countdown", "yes") === "yes";
+
+        $("theme").addEventListener("change", () => applyTheme($("theme").value));
+        $("font").addEventListener("change", () => applyFont($("font").value));
+        $("smallerBtn").addEventListener("click", () => applySize(size - 10, true));
+        $("largerBtn").addEventListener("click", () => applySize(size + 10, true));
+        $("lang").addEventListener("change", () => store("lang", $("lang").value));
+        $("rate").addEventListener("change", () => store("rate", $("rate").value));
+        $("voiceLang").addEventListener("change", () => store("voiceLang", $("voiceLang").value));
+        $("voiceMethod").addEventListener("change", () => store("voiceMethod", $("voiceMethod").value));
+        $("auto").addEventListener("change", () => store("auto", $("auto").checked ? "yes" : "no"));
+        $("readback").addEventListener("change", () => store("readback", $("readback").checked ? "yes" : "no"));
+        $("countdown").addEventListener("change", () => store("countdown", $("countdown").checked ? "yes" : "no"));
+
+        // ---------- speech output ----------
+        const synth = "speechSynthesis" in window ? window.speechSynthesis : null;
+        if (synth) synth.onvoiceschanged = () => synth.getVoices();
+
+        // Split text into sentences so a long answer can be paused and resumed.
+        // The lookbehind keeps numbers like 0.93 together; old browsers just skip splitting.
+        let SPLIT = null;
+        try { SPLIT = new RegExp("(?<=[.!?\u0964])\\s+"); } catch (e) { SPLIT = null; }
+        function splitSentences(text) {
+            if (!SPLIT) return [text];
+            return text.split(SPLIT).map((s) => s.trim()).filter(Boolean);
         }
 
-        // Speak text with the browser's built-in voice
-        function speak(text) {
-            lastSpoken = text;
-            if (!("speechSynthesis" in window)) {
-                setStatus("Speech is not supported in this browser.");
-                return;
-            }
-            window.speechSynthesis.cancel();
+        function makeUtterance(text, lang) {
             const u = new SpeechSynthesisUtterance(text);
-            u.lang = resultLang === "hi" ? "hi-IN" : "en-IN";
+            u.lang = lang === "hi" ? "hi-IN" : "en-IN";
             // Look for an installed voice that matches the language
-            const voice = window.speechSynthesis.getVoices().find(
+            const match = synth.getVoices().find(
                 (v) => v.lang.replace("_", "-").toLowerCase() === u.lang.toLowerCase()
             );
-            if (voice) u.voice = voice;
-            else if (resultLang === "hi") {
-                setStatus("No Hindi voice found on this device. The text is shown on screen.");
-            }
-            u.rate = 0.95;
-            window.speechSynthesis.speak(u);
+            if (match) u.voice = match;
+            else if (lang === "hi") setStatus("No Hindi voice found on this device. The text is shown on screen.");
+            u.rate = parseFloat($("rate").value) || 1;
+            return u;
         }
 
-        // Fill the page with the description and prepare the spoken queue
-        function show(r) {
+        // Read several pieces one after another, remembering where we are.
+        // opts.answer = true means this is a question's answer, so keep the old resume point.
+        function playChunks(chunks, start, opts) {
+            opts = opts || {};
+            if (!synth) { setStatus("Speech is not supported in this browser."); return; }
+            readChunks = chunks;
+            readPos = start || 0;
+            readIsAnswer = !!opts.answer;
+            if (!opts.answer) { resumePos = null; $("continueBtn").hidden = true; }
+            lastSpoken = opts.label || chunks.join(" ");
+            const token = ++readToken;
+            synth.cancel();
+            const next = () => {
+                if (token !== readToken || readPos >= readChunks.length) return;
+                const i = readPos;
+                const u = makeUtterance(readChunks[i], resultLang);
+                u.onend = () => { if (token === readToken) { readPos = i + 1; next(); } };
+                synth.speak(u);
+            };
+            next();
+        }
+
+        function speak(text, isAnswer) {
+            playChunks(splitSentences(text), 0, { label: text, answer: isAnswer });
+        }
+
+        // Stop talking; if we were in the middle of reading, remember the place
+        function stopSpeaking() {
+            if (!synth) return;
+            const reading = readChunks.length > 0 && readPos < readChunks.length && !readIsAnswer;
+            readToken++;
+            synth.cancel();
+            if (reading) {
+                resumeChunks = readChunks;
+                resumePos = readPos;
+                $("continueBtn").hidden = false;
+            }
+        }
+
+        function continueReading() {
+            if (resumePos === null) { setStatus("Nothing to continue."); return; }
+            playChunks(resumeChunks, resumePos);
+        }
+
+        // A short beep: high when the microphone opens, lower when it closes
+        function beep(freq) {
+            try {
+                const Ctx = window.AudioContext || window.webkitAudioContext;
+                const ctx = new Ctx();
+                if (ctx.state === "suspended") ctx.resume();
+                const o = ctx.createOscillator();
+                const g = ctx.createGain();
+                o.frequency.value = freq || 880;
+                g.gain.value = 0.15;
+                o.connect(g);
+                g.connect(ctx.destination);
+                o.start();
+                setTimeout(() => { o.stop(); ctx.close(); }, 180);
+            } catch (e) { /* no audio available */ }
+        }
+
+        // ---------- chart as sound ----------
+        function numberFrom(s) {
+            const m = String(s).replace(/,/g, "").match(/-?\d+(\.\d+)?/);
+            return m ? parseFloat(m[0]) : null;
+        }
+        function stopSound() {
+            soundTimers.forEach(clearTimeout);
+            soundTimers = [];
+            if (soundCtx) { try { soundCtx.close(); } catch (e) { } soundCtx = null; }
+        }
+        function playSound() {
+            if (soundValues.length < 3) return;
+            stopSpeaking();
+            stopSound();
+            const nums = soundValues.map((v) => v.n);
+            const lo = Math.min(...nums), hi = Math.max(...nums);
+
+            const startTones = () => {
+                const Ctx = window.AudioContext || window.webkitAudioContext;
+                const ctx = new Ctx();
+                soundCtx = ctx;
+                if (ctx.state === "suspended") ctx.resume();
+                const step = 0.5;
+                nums.forEach((n, i) => {
+                    const t = ctx.currentTime + 0.2 + i * step;
+                    const f = hi === lo ? 523 : 220 + ((n - lo) / (hi - lo)) * 660;
+                    const o = ctx.createOscillator();
+                    const g = ctx.createGain();
+                    o.frequency.value = f;
+                    g.gain.setValueAtTime(0.0001, t);
+                    g.gain.exponentialRampToValueAtTime(0.25, t + 0.03);
+                    g.gain.exponentialRampToValueAtTime(0.0001, t + step * 0.9);
+                    o.connect(g);
+                    g.connect(ctx.destination);
+                    o.start(t);
+                    o.stop(t + step);
+                });
+                soundTimers.push(setTimeout(() => {
+                    setStatus("Finished playing the tones.");
+                    stopSound();
+                }, (0.2 + nums.length * step) * 1000 + 300));
+            };
+
+            const intro = resultLang === "hi"
+                ? "मुख्य मान क्रम में स्वरों के रूप में बजाए जा रहे हैं। नीचा स्वर यानी छोटा मान, ऊँचा स्वर यानी बड़ा मान। ये पूरी तस्वीर नहीं, केवल मुख्य मान हैं।"
+                : "Playing " + nums.length + " key values as tones, in the order listed. Low pitch means a small value, high pitch means a large value. These are only the key values, not the whole image.";
+            setStatus("Playing the key values as sound.");
+            if (!synth) { startTones(); return; }
+            readToken++;
+            synth.cancel();
+            const u = makeUtterance(intro, resultLang);
+            u.onend = startTones;
+            synth.speak(u);
+        }
+
+        function stopAll() { stopSpeaking(); stopSound(); }
+
+        // ---------- choosing or capturing an image ----------
+        // A rough check for dark or blurry photos, so the student can retake before describing
+        function checkQuality(file) {
+            const img = new Image();
+            const url = URL.createObjectURL(file);
+            img.onload = () => {
+                try {
+                    const s = Math.min(1, 320 / Math.max(img.width, img.height));
+                    const w = Math.max(8, Math.round(img.width * s));
+                    const h = Math.max(8, Math.round(img.height * s));
+                    const c = document.createElement("canvas");
+                    c.width = w; c.height = h;
+                    const g = c.getContext("2d", { willReadFrequently: true });
+                    g.drawImage(img, 0, 0, w, h);
+                    const d = g.getImageData(0, 0, w, h).data;
+                    const gray = new Float32Array(w * h);
+                    let sum = 0;
+                    for (let i = 0; i < w * h; i++) {
+                        gray[i] = 0.299 * d[i * 4] + 0.587 * d[i * 4 + 1] + 0.114 * d[i * 4 + 2];
+                        sum += gray[i];
+                    }
+                    const mean = sum / (w * h);
+                    let ls = 0, lq = 0, n = 0;
+                    for (let y = 1; y < h - 1; y++) {
+                        for (let x = 1; x < w - 1; x++) {
+                            const i = y * w + x;
+                            const l = 4 * gray[i] - gray[i - 1] - gray[i + 1] - gray[i - w] - gray[i + w];
+                            ls += l; lq += l * l; n++;
+                        }
+                    }
+                    const variance = lq / n - (ls / n) * (ls / n);
+                    const warns = [];
+                    if (mean < 50) warns.push("The photo looks very dark. Add more light and retake it if you can.");
+                    else if (mean > 235) warns.push("The photo looks washed out. Reduce glare and retake it if you can.");
+                    if (variance < 25) warns.push("The photo may be blurry. Hold the camera steady and retake it if you can.");
+                    if (warns.length) setStatus(warns.join(" ") + " You can still press Describe image.");
+                } catch (e) { /* the check is optional */ }
+                URL.revokeObjectURL(url);
+            };
+            img.onerror = () => URL.revokeObjectURL(url);
+            img.src = url;
+        }
+
+        function setImage(f, msg) {
+            stopAll();
+            cancelListening();
+            resumePos = null;
+            $("continueBtn").hidden = true;
+            currentFile = f;
+            if (previewUrl) URL.revokeObjectURL(previewUrl);
+            previewUrl = URL.createObjectURL(f);
+            $("preview").src = previewUrl;
+            $("preview").hidden = false;
+            history = [];
+            $("answers").innerHTML = "";
+            $("result").hidden = true;
+            setStatus(msg);
+            checkQuality(f);
+        }
+        function onPick(e) {
+            const f = e.target.files[0];
+            if (f) setImage(f, "Selected " + f.name + ". Press Describe image.");
+        }
+        $("file").addEventListener("change", onPick);
+        $("cameraFallback").addEventListener("change", onPick);
+
+        function closeCamera() {
+            if (camStream) camStream.getTracks().forEach((t) => t.stop());
+            camStream = null;
+            $("video").srcObject = null;
+            $("cameraPanel").hidden = true;
+        }
+
+        async function openCamera() {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                setStatus("Live camera needs a secure address. Opening your phone's camera app instead.");
+                $("cameraFallback").click();
+                return;
+            }
+            try {
+                closeCamera();
+                camStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: facing, width: { ideal: 1920 }, height: { ideal: 1080 } },
+                    audio: false,
+                });
+                $("video").srcObject = camStream;
+                $("cameraPanel").hidden = false;
+                $("snapBtn").focus();
+                setStatus("Camera is on. Hold the page steady in front of it, then press Take photo.");
+            } catch (err) {
+                const msgs = {
+                    NotAllowedError: "Camera permission was blocked. Click the camera icon in the address bar, choose Allow, and try again.",
+                    NotFoundError: "No camera was found on this device.",
+                    NotReadableError: "The camera is being used by another app.",
+                };
+                setStatus(msgs[err.name] || "Could not open the camera (" + err.name + "). You can choose a photo from your device instead.");
+            }
+        }
+
+        function capture() {
+            const v = $("video");
+            if (!v.videoWidth) { setStatus("The camera is not ready yet. Wait a moment and try again."); return; }
+            const scale = Math.min(1, 1600 / Math.max(v.videoWidth, v.videoHeight));
+            const c = document.createElement("canvas");
+            c.width = Math.round(v.videoWidth * scale);
+            c.height = Math.round(v.videoHeight * scale);
+            c.getContext("2d").drawImage(v, 0, 0, c.width, c.height);
+            c.toBlob((blob) => {
+                if (!blob) { setStatus("Could not capture the photo."); return; }
+                setImage(new File([blob], "camera-photo.jpg", { type: "image/jpeg" }), "Photo taken. Press Describe image.");
+                closeCamera();
+                $("describeBtn").focus();
+            }, "image/jpeg", 0.9);
+        }
+
+        function takePhoto() {
+            if (!$("countdown").checked) { capture(); return; }
+            $("snapBtn").disabled = true;
+            let n = 3;
+            const tick = () => {
+                if (n === 0) { $("snapBtn").disabled = false; capture(); return; }
+                setStatus(String(n));
+                if (synth) { synth.cancel(); synth.speak(makeUtterance(String(n), "en")); }
+                n--;
+                setTimeout(tick, 1000);
+            };
+            tick();
+        }
+
+        $("cameraBtn").addEventListener("click", openCamera);
+        $("snapBtn").addEventListener("click", takePhoto);
+        $("closeCamBtn").addEventListener("click", () => { closeCamera(); setStatus("Camera closed."); $("cameraBtn").focus(); });
+        $("flipBtn").addEventListener("click", () => { facing = facing === "environment" ? "user" : "environment"; openCamera(); });
+        window.addEventListener("pagehide", closeCamera);
+
+        // ---------- waiting indicator ----------
+        function startTimer() {
+            const t0 = Date.now();
+            $("timer").textContent = "0s";
+            timerId = setInterval(() => {
+                const s = Math.floor((Date.now() - t0) / 1000);
+                $("timer").textContent = s + "s";
+                // Only announce every 15 seconds so screen readers are not spammed
+                if (s > 0 && s % 15 === 0) setStatus("Still working. " + s + " seconds so far.");
+            }, 1000);
+        }
+        function stopTimer() {
+            clearInterval(timerId);
+            $("timer").textContent = "";
+        }
+
+        // ---------- showing the result ----------
+        function setContentLang(l) {
+            ["summary", "details", "values", "trend", "notes", "answers"].forEach((id) => { $(id).lang = l; });
+        }
+
+        function show(r, model) {
+            lastResult = r;
             summaryText = r.summary;
             $("summary").textContent = r.summary;
             $("trend").textContent = r.trend || "None";
             $("notes").textContent = r.confidence_notes || "None";
+            $("modelUsed").textContent = model ? "Described by " + model + "." : "";
 
             $("details").innerHTML = "";
             r.details.forEach((d) => {
@@ -202,7 +1001,6 @@
                 li.textContent = d;
                 $("details").appendChild(li);
             });
-
             $("values").innerHTML = "";
             r.key_values.forEach((kv) => {
                 const li = document.createElement("li");
@@ -214,68 +1012,572 @@
             if (r.trend) queue.push("Trend: " + r.trend);
             if (r.confidence_notes) queue.push("Note: " + r.confidence_notes);
             queuePos = 0;
+            $("progress").textContent = queue.length + " extra details available. Press More detail.";
 
-            $("result").style.display = "block";
+            // The sound chart needs at least three numeric key values
+            soundValues = r.key_values
+                .map((kv) => ({ label: kv.label, n: numberFrom(kv.value) }))
+                .filter((x) => x.n !== null);
+            $("soundBtn").hidden = soundValues.length < 3;
+
+            resumePos = null;
+            $("continueBtn").hidden = true;
+            $("result").hidden = false;
             if ($("auto").checked) speak(r.summary);
         }
 
         async function describe() {
-            const file = $("file").files[0];
-            if (!file) { setStatus("Please choose an image first."); $("file").focus(); return; }
-
+            if (!currentFile) { setStatus("Please choose an image or take a photo first."); $("file").focus(); return; }
+            stopAll();
+            cancelListening();
             $("describeBtn").disabled = true;
+            $("spinner").hidden = false;
             setStatus("Describing your image. This can take up to a minute.");
-            $("preview").src = URL.createObjectURL(file);
-            $("preview").style.display = "block";
+            startTimer();
 
             const form = new FormData();
-            form.append("file", file);
+            form.append("file", currentFile);
             form.append("language", $("lang").value);
             try {
                 const res = await fetch("/describe", { method: "POST", body: form });
                 let data = null;
                 try { data = await res.json(); } catch (e) { /* server sent plain text */ }
                 if (!res.ok) {
-                    throw new Error(
-                        data && typeof data.detail === "string"
-                            ? data.detail
-                            : "The server had a problem (code " + res.status + "). Please try again."
-                    );
+                    throw new Error(data && typeof data.detail === "string"
+                        ? data.detail : "The server had a problem (code " + res.status + "). Please try again.");
                 }
                 resultLang = $("lang").value;
-                $("result").lang = resultLang;
-                show(data.result);
-                setStatus("Done. Press Repeat or More detail to keep listening.");
+                setContentLang(resultLang);
+                history = [];
+                $("answers").innerHTML = "";
+                show(data.result, data.model_used);
+                $("resultTitle").focus();
+                setStatus("Done. Press Repeat or More detail, or ask a question.");
             } catch (err) {
-                setStatus("Sorry: " + err.message);
+                setStatus("Sorry: " + err.message + " Press Describe image to try again.");
             } finally {
+                stopTimer();
+                $("spinner").hidden = true;
                 $("describeBtn").disabled = false;
             }
         }
 
+        // ---------- listening controls ----------
         function moreDetail() {
             if (!queue.length) return;
-            if (queuePos >= queue.length) { speak("That is everything."); return; }
+            if (queuePos >= queue.length) {
+                speak("That is everything.");
+                $("progress").textContent = "All " + queue.length + " details read.";
+                return;
+            }
             speak(queue[queuePos++]);
+            $("progress").textContent = "Detail " + queuePos + " of " + queue.length + ".";
+        }
+        function readAll() {
+            const parts = [summaryText, ...queue];
+            playChunks(parts.flatMap(splitSentences), 0, { label: parts.join(". ") });
         }
 
+        // ---------- questions (typed or spoken) ----------
+        function addAnswer(q, a) {
+            const box = document.createElement("div");
+            box.className = "qa";
+            const p1 = document.createElement("p");
+            const s1 = document.createElement("strong");
+            s1.textContent = "You asked: ";
+            p1.appendChild(s1);
+            p1.appendChild(document.createTextNode(q));
+            const p2 = document.createElement("p");
+            const s2 = document.createElement("strong");
+            s2.textContent = "Answer: ";
+            p2.appendChild(s2);
+            p2.appendChild(document.createTextNode(a));
+            box.appendChild(p1);
+            box.appendChild(p2);
+            $("answers").prepend(box);
+        }
+
+        // Send a question (typed text or an audio recording) to the server
+        async function postQuestion(form, typedQ, opts) {
+            opts = opts || {};
+            $("askBtn").disabled = true;
+            setStatus("Thinking about your question.");
+            const t0 = Date.now();
+            const tick = setInterval(() => {
+                if (!$("voiceBar").hidden && $("voiceBar").dataset.state === "busy") {
+                    $("voiceState").textContent = "Thinking about your question... " + Math.floor((Date.now() - t0) / 1000) + "s";
+                }
+            }, 1000);
+            try {
+                const res = await fetch("/ask", { method: "POST", body: form });
+                let data = null;
+                try { data = await res.json(); } catch (e) { /* plain text */ }
+                if (!res.ok) {
+                    throw new Error(data && typeof data.detail === "string"
+                        ? data.detail : "The server had a problem (code " + res.status + "). Please try again.");
+                }
+                const q = (data.question || typedQ || "").trim();
+                if (!q) {
+                    setStatus("I could not hear a clear question. Press Alt+Q and try again.");
+                    return;
+                }
+                resultLang = $("lang").value;
+                setContentLang(resultLang);
+                history.push({ q: q, a: data.answer });
+                if (history.length > 6) history.shift();
+                addAnswer(q, data.answer);
+                $("question").value = "";
+                setStatus(resumePos !== null ? "Answer ready. Press Alt+C to continue reading." : "Answer ready.");
+                // A spoken question always gets a spoken answer
+                if ($("auto").checked || opts.spoken) {
+                    const prefix = opts.spoken && $("readback").checked
+                        ? (resultLang === "hi" ? "मैंने सुना: " : "I heard: ") + q + ". "
+                        : "";
+                    speak(prefix + data.answer, true);
+                }
+            } catch (err) {
+                setStatus("Sorry: " + err.message);
+            } finally {
+                clearInterval(tick);
+                $("askBtn").disabled = false;
+                hideVoiceIf("busy");
+            }
+        }
+
+        function askQuestion(q, opts) {
+            q = (q || "").trim();
+            if (!currentFile) { setStatus("Choose and describe an image first."); hideVoiceIf("busy"); return; }
+            if (!q) { setStatus("Please type or say a question."); $("question").focus(); hideVoiceIf("busy"); return; }
+            const form = new FormData();
+            form.append("file", currentFile);
+            form.append("question", q);
+            form.append("language", $("lang").value);
+            form.append("history", JSON.stringify(history.slice(-3)));
+            postQuestion(form, q, opts);
+        }
+
+        // ---------- voice status bar ----------
+        function showVoice(state, label, heard) {
+            const bar = $("voiceBar");
+            bar.hidden = false;
+            bar.dataset.state = state;
+            document.body.classList.add("voice-on");
+            $("voiceState").textContent = label;
+            if (heard !== undefined) $("voiceHeard").textContent = heard ? "I hear: " + heard : "";
+        }
+        function hideVoice() {
+            $("voiceBar").hidden = true;
+            document.body.classList.remove("voice-on");
+            $("voiceHeard").textContent = "";
+            $("level").value = 0;
+        }
+        function hideVoiceIf(state) {
+            if (!$("voiceBar").hidden && $("voiceBar").dataset.state === state) hideVoice();
+        }
+
+        // ---------- voice input ----------
+        function voiceLangCode() {
+            const v = $("voiceLang").value;
+            if (v !== "auto") return v;
+            return $("lang").value === "hi" ? "hi-IN" : "en-IN";
+        }
+        function voiceLangName(code) {
+            return { "en-IN": "English (India)", "en-US": "English (US)", "hi-IN": "Hindi" }[code] || code;
+        }
+        function voiceKind() {
+            const m = $("voiceMethod").value;
+            if (m === "gemini") return "gemini";
+            return SR ? "browser" : "gemini";
+        }
+        function micMessage(err) {
+            const msgs = {
+                NotAllowedError: "Microphone permission is blocked. Click the lock icon in the address bar, choose Allow for the microphone, and reload. On Windows, also check Settings, Privacy and security, Microphone.",
+                NotFoundError: "No microphone was found. Plug one in or check your sound settings.",
+                NotReadableError: "The microphone is being used by another app. Close it and try again.",
+                SecurityError: "The browser blocked the microphone on this address.",
+            };
+            return msgs[err.name] || "Could not use the microphone (" + err.name + ").";
+        }
+
+        function clearVoiceTimers(s) {
+            clearTimeout(s.dog);
+            clearTimeout(s.max);
+            clearInterval(s.timer);
+        }
+        // Let go of the session but leave the bar showing (the answer is still coming)
+        function releaseVoice(s) {
+            clearVoiceTimers(s);
+            if (voice === s) voice = null;
+            $("level").value = 0;
+        }
+        function endVoice(s) { releaseVoice(s); hideVoice(); }
+        function voiceError(s, msg) {
+            releaseVoice(s);
+            showVoice("error", msg, "");
+            setStatus(msg);
+            setTimeout(() => hideVoiceIf("error"), 9000);
+        }
+
+        // Start listening. mode "ask" sends the question; mode "test" only shows what was heard.
+        function startVoice(mode) {
+            if (voice) return;
+            const lang = voiceLangCode();
+            const s = { mode: mode, kind: voiceKind(), lang: lang, cancelled: false };
+            voice = s;
+            showVoice("starting", "Starting microphone...", "");
+            $("voiceHint").textContent = "Listening in " + voiceLangName(lang) +
+                ". Press Alt+Q again when you finish, or Escape to cancel.";
+            beep(880);
+            // Wait for the beep to finish so the microphone does not hear it
+            setTimeout(() => {
+                if (voice !== s) return;
+                if (s.kind === "browser") runBrowser(s); else runRecording(s);
+            }, 350);
+        }
+
+        // Path 1: the browser's own recognizer, with live text
+        function runBrowser(s) {
+            let r;
+            try { r = new SR(); } catch (e) { fallbackToRecording(s, "Browser speech recognition is not available. Switching to Gemini listening."); return; }
+            s.r = r;
+            s.text = "";
+            s.heardAudio = false;
+            s.failed = null;
+            r.lang = s.lang;
+            r.interimResults = true;
+            r.continuous = false;
+            r.maxAlternatives = 1;
+            r.onaudiostart = () => {
+                s.heardAudio = true;
+                clearTimeout(s.dog);
+                if (voice === s) showVoice("on", "Microphone is ON. Speak now.");
+            };
+            r.onspeechstart = () => { if (voice === s) showVoice("hearing", "Hearing your voice..."); };
+            r.onspeechend = () => { if (voice === s) showVoice("busy", "Finishing...", s.text); };
+            r.onresult = (e) => {
+                let text = "";
+                for (let i = 0; i < e.results.length; i++) text += e.results[i][0].transcript;
+                s.text = text.trim();
+                if (voice === s) showVoice("hearing", "Hearing your voice...", s.text);
+            };
+            r.onerror = (e) => { s.failed = e.error; };
+            r.onend = () => browserEnded(s);
+            // If nothing starts within 10 seconds (a permission prompt may need time), switch methods
+            s.dog = setTimeout(() => {
+                if (voice === s && !s.heardAudio) { s.watchdog = true; try { r.abort(); } catch (e) { } }
+            }, 10000);
+            s.max = setTimeout(() => { if (voice === s) { try { r.stop(); } catch (e) { } } }, 20000);
+            try { r.start(); }
+            catch (e) { fallbackToRecording(s, "Could not start browser speech recognition. Switching to Gemini listening."); }
+        }
+
+        function browserEnded(s) {
+            if (voice !== s) return;
+            clearVoiceTimers(s);
+            if (s.cancelled) { endVoice(s); return; }
+            if (s.watchdog) { fallbackToRecording(s, "The browser's speech recognition did not start. Switching to Gemini listening."); return; }
+            if (s.text) { gotTranscript(s, s.text); return; }
+            const f = s.failed;
+            if (f === "not-allowed") { voiceError(s, micMessage({ name: "NotAllowedError" })); return; }
+            if (f === "audio-capture") { voiceError(s, micMessage({ name: "NotFoundError" })); return; }
+            if (f === "network" || f === "service-not-allowed" || f === "language-not-supported") {
+                fallbackToRecording(s, "Browser speech recognition is not working here (" + f + "). Switching to Gemini listening.");
+                return;
+            }
+            if (f === "aborted") { endVoice(s); return; }
+            voiceError(s, "I did not hear you. Press Alt+Q and try again, speaking a little closer to the microphone.");
+        }
+
+        function gotTranscript(s, text) {
+            beep(520);
+            if (s.mode === "test") {
+                releaseVoice(s);
+                showVoice("busy", "Test finished.", text);
+                setStatus("Test: I heard \"" + text + "\". If that is wrong, speak closer to the microphone, check the Language you will speak setting, or choose Gemini listens.");
+                setTimeout(() => hideVoiceIf("busy"), 6000);
+                return;
+            }
+            releaseVoice(s);
+            showVoice("busy", "Heard you. Thinking about your question...", text);
+            $("question").value = text;
+            askQuestion(text, { spoken: true });
+        }
+
+        function fallbackToRecording(s, msg) {
+            clearVoiceTimers(s);
+            s.kind = "gemini";
+            setStatus(msg);
+            showVoice("starting", "Switching to Gemini listening...", "");
+            beep(880);
+            setTimeout(() => { if (voice === s) runRecording(s); }, 350);
+        }
+
+        // Path 2: record the audio and let Gemini listen to it
+        async function runRecording(s) {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) {
+                voiceError(s, "Voice input is not supported in this browser. Type your question instead.");
+                return;
+            }
+            let stream;
+            try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+            catch (err) { voiceError(s, micMessage(err)); return; }
+            if (voice !== s) { stream.getTracks().forEach((t) => t.stop()); return; }
+
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            const ctx = new Ctx();
+            if (ctx.state === "suspended") ctx.resume();
+            const analyser = ctx.createAnalyser();
+            analyser.fftSize = 1024;
+            ctx.createMediaStreamSource(stream).connect(analyser);
+
+            const mime = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4"]
+                .find((t) => MediaRecorder.isTypeSupported(t));
+            let recorder;
+            try { recorder = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream); }
+            catch (e) {
+                stream.getTracks().forEach((t) => t.stop());
+                try { ctx.close(); } catch (e2) { }
+                voiceError(s, "This browser cannot record audio. Type your question instead.");
+                return;
+            }
+            s.recorder = recorder;
+            s.stream = stream;
+            s.ctx = ctx;
+            s.analyser = analyser;
+            s.chunks = [];
+            s.spoke = false;
+            s.noise = 0;
+            s.stopping = false;
+            s.t0 = Date.now();
+            s.lastLoud = s.t0;
+            recorder.ondataavailable = (e) => { if (e.data && e.data.size) s.chunks.push(e.data); };
+            recorder.onstop = () => finishRecording(s);
+            recorder.start();
+            showVoice("on", "Microphone is ON. Speak now.");
+            s.timer = setInterval(() => monitorRecording(s), 100);
+        }
+
+        function monitorRecording(s) {
+            if (voice !== s || s.stopping) return;
+            const data = new Uint8Array(s.analyser.fftSize);
+            s.analyser.getByteTimeDomainData(data);
+            let sum = 0;
+            for (const x of data) { const d = (x - 128) / 128; sum += d * d; }
+            const rms = Math.sqrt(sum / data.length);
+            $("level").value = Math.min(1, rms * 6);
+            const now = Date.now();
+            // Learn the room's background noise during the first half second
+            if (now - s.t0 < 500) { s.noise = Math.max(s.noise, rms); return; }
+            const threshold = Math.max(0.02, s.noise * 2.5);
+            if (rms > threshold) {
+                s.lastLoud = now;
+                s.spoke = true;
+                showVoice("hearing", "Hearing your voice...");
+            }
+            if (s.spoke && now - s.lastLoud > 1300) stopRecording(s);
+            else if (!s.spoke && now - s.t0 > 8000) stopRecording(s);
+            else if (now - s.t0 > 15000) stopRecording(s);
+        }
+
+        function stopRecording(s, cancel) {
+            if (s.stopping) return;
+            s.stopping = true;
+            clearInterval(s.timer);
+            if (cancel) s.cancelled = true;
+            if (s.recorder && s.recorder.state !== "inactive") s.recorder.stop();   // triggers finishRecording
+            else finishRecording(s);
+        }
+
+        async function finishRecording(s) {
+            clearInterval(s.timer);
+            if (s.stream) s.stream.getTracks().forEach((t) => t.stop());
+            try { if (s.ctx) s.ctx.close(); } catch (e) { }
+            $("level").value = 0;
+            if (voice !== s) return;
+            if (s.cancelled) { endVoice(s); return; }
+            if (!s.spoke || !s.chunks.length) {
+                voiceError(s, "I did not hear any sound. Check that the right microphone is selected, not muted, and the volume is up. Use Test microphone in More settings.");
+                return;
+            }
+            beep(520);
+            if (s.mode === "test") {
+                releaseVoice(s);
+                showVoice("busy", "Microphone works. I could hear you.", "");
+                setStatus("Microphone works. I could hear you.");
+                setTimeout(() => hideVoiceIf("busy"), 4000);
+                return;
+            }
+            releaseVoice(s);
+            showVoice("busy", "Heard you. Understanding your question...", "");
+            try {
+                const wav = await blobToWav(new Blob(s.chunks, { type: s.recorder.mimeType || "audio/webm" }));
+                const form = new FormData();
+                form.append("file", currentFile);
+                form.append("audio", wav, "question.wav");
+                form.append("language", $("lang").value);
+                form.append("history", JSON.stringify(history.slice(-3)));
+                await postQuestion(form, "", { spoken: true });
+            } catch (err) {
+                showVoice("error", "Could not process the recording (" + err.message + "). Type your question instead.", "");
+                setTimeout(() => hideVoiceIf("error"), 9000);
+            }
+        }
+
+        // Turn a recording into a small 16 kHz mono WAV file, which Gemini accepts
+        async function blobToWav(blob) {
+            const buf = await blob.arrayBuffer();
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            const ctx = new Ctx();
+            const decoded = await ctx.decodeAudioData(buf);
+            ctx.close();
+            const rate = 16000;
+            const off = new OfflineAudioContext(1, Math.max(1, Math.ceil(decoded.duration * rate)), rate);
+            const src = off.createBufferSource();
+            src.buffer = decoded;
+            src.connect(off.destination);
+            src.start();
+            const rendered = await off.startRendering();
+            return encodeWav(rendered.getChannelData(0), rate);
+        }
+        function encodeWav(samples, rate) {
+            const buffer = new ArrayBuffer(44 + samples.length * 2);
+            const view = new DataView(buffer);
+            const text = (o, str) => { for (let i = 0; i < str.length; i++) view.setUint8(o + i, str.charCodeAt(i)); };
+            text(0, "RIFF"); view.setUint32(4, 36 + samples.length * 2, true); text(8, "WAVE");
+            text(12, "fmt "); view.setUint32(16, 16, true); view.setUint16(20, 1, true);
+            view.setUint16(22, 1, true); view.setUint32(24, rate, true);
+            view.setUint32(28, rate * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+            text(36, "data"); view.setUint32(40, samples.length * 2, true);
+            let o = 44;
+            for (let i = 0; i < samples.length; i++, o += 2) {
+                const v = Math.max(-1, Math.min(1, samples[i]));
+                view.setInt16(o, v < 0 ? v * 0x8000 : v * 0x7fff, true);
+            }
+            return new Blob([view], { type: "audio/wav" });
+        }
+
+        // Second press of Alt+Q or the Done button: finish listening now
+        function finishListening() {
+            const s = voice;
+            if (!s) return;
+            if (s.kind === "browser" && s.r) {
+                showVoice("busy", "Finishing...", s.text || "");
+                try { s.r.stop(); } catch (e) { }
+            } else if (s.recorder) {
+                stopRecording(s);
+            } else {
+                cancelListening();
+            }
+        }
+
+        // Escape or the Cancel button: stop listening and throw the recording away
+        function cancelListening() {
+            const s = voice;
+            if (!s) return;
+            s.cancelled = true;
+            if (s.kind === "browser" && s.r) {
+                try { s.r.abort(); } catch (e) { }
+                endVoice(s);
+            } else if (s.recorder) {
+                stopRecording(s, true);
+            } else {
+                endVoice(s);
+            }
+            setStatus("Cancelled.");
+        }
+
+        // Stop whatever is being read, remember the place, then listen
+        function interruptAndAsk() {
+            if (voice) { finishListening(); return; }
+            if ($("askBtn").disabled) { setStatus("Still working on your last question."); return; }
+            if (!currentFile || $("result").hidden) { setStatus("Describe an image first, then ask your question."); return; }
+            stopAll();
+            startVoice("ask");
+        }
+
+        function testMic() {
+            if (voice) { cancelListening(); return; }
+            stopAll();
+            startVoice("test");
+        }
+
+        // ---------- study notes ----------
+        function saveNotes() {
+            if (!lastResult) return;
+            const lines = [
+                "SoundSlate study notes",
+                "(Generated by AI. It can contain mistakes. Check important numbers against the original image.)",
+                "",
+                "SUMMARY", lastResult.summary, "",
+                "DETAILS", ...lastResult.details.map((d) => "- " + d), "",
+                "KEY VALUES", ...lastResult.key_values.map((kv) => "- " + kv.label + ": " + kv.value), "",
+                "TREND", lastResult.trend || "None", "",
+                "CONFIDENCE NOTES", lastResult.confidence_notes || "None",
+            ];
+            if (history.length) {
+                lines.push("", "QUESTIONS AND ANSWERS");
+                history.forEach((h) => lines.push("Q: " + h.q, "A: " + h.a, ""));
+            }
+            const blob = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "soundslate-notes.txt";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+            setStatus("Study notes saved to your downloads folder.");
+        }
+
+        // ---------- wiring the buttons ----------
         $("describeBtn").addEventListener("click", describe);
         $("repeatBtn").addEventListener("click", () => speak(lastSpoken));
         $("moreBtn").addEventListener("click", moreDetail);
-        $("allBtn").addEventListener("click", () => speak([summaryText, ...queue].join(". ")));
-        $("stopBtn").addEventListener("click", () => window.speechSynthesis.cancel());
+        $("allBtn").addEventListener("click", readAll);
+        $("soundBtn").addEventListener("click", playSound);
+        $("continueBtn").addEventListener("click", continueReading);
+        $("stopBtn").addEventListener("click", stopAll);
+        $("interruptBtn").addEventListener("click", interruptAndAsk);
+        $("askBtn").addEventListener("click", () => askQuestion($("question").value));
+        $("listenBtn").addEventListener("click", interruptAndAsk);
+        $("testMicBtn").addEventListener("click", testMic);
+        $("vDone").addEventListener("click", finishListening);
+        $("vCancel").addEventListener("click", () => { if (voice) cancelListening(); else hideVoice(); });
+        $("saveBtn").addEventListener("click", saveNotes);
+        $("question").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") { e.preventDefault(); askQuestion($("question").value); }
+        });
+        document.querySelectorAll(".chip").forEach((b) =>
+            b.addEventListener("click", () => askQuestion(b.dataset.q)));
+        $("copyBtn").addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText([summaryText, ...queue].join("\n"));
+                setStatus("Description copied.");
+            } catch (e) {
+                setStatus("Could not copy. Select the text and copy it manually.");
+            }
+        });
 
-        // Alt+key shortcuts (plain letters would clash with screen reader keys)
+        // Keyboard shortcuts (Alt+letter, so plain letters do not clash with screen readers)
         document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                if (voice) cancelListening();
+                stopAll();
+                return;
+            }
             if (!e.altKey || e.ctrlKey || e.metaKey) return;
-            const k = e.key.toLowerCase();
             const actions = {
                 r: () => speak(lastSpoken),
                 m: moreDetail,
-                a: () => speak([summaryText, ...queue].join(". ")),
-                s: () => window.speechSynthesis.cancel(),
+                a: readAll,
+                h: playSound,
+                q: interruptAndAsk,
+                c: continueReading,
+                s: stopAll,
             };
-            if (actions[k]) { e.preventDefault(); actions[k](); }
+            const fn = actions[e.key.toLowerCase()];
+            if (fn) { e.preventDefault(); fn(); }
         });
     </script>
 </body>
