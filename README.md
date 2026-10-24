@@ -108,7 +108,6 @@ SoundSlate/
 ├── requirements.txt     Python dependencies
 ├── PROJECT.md           Short project context file used with the coding agent
 ├── results.md           Test log: what was checked, what was right and wrong
-├── samples/             Test images
 ├── describe_structured.py, describe_image.py,
 │   try_models.py, list_models.py, gemini_test.py
 │                        Command-line scripts used during development
