@@ -7,8 +7,12 @@
     <title>SoundSlate - AI Visual Learning Assistant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400..700&family=Inter:wght@400..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400..700&family=Inter:wght@400..700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -252,6 +256,7 @@
                 transform: scaleY(0.4);
                 opacity: 0.6;
             }
+
             100% {
                 transform: scaleY(1.1);
                 opacity: 1;
@@ -333,14 +338,30 @@
             animation: bounce .55s ease-in-out infinite alternate;
         }
 
-        .bars span:nth-child(2) { animation-delay: .1s; }
-        .bars span:nth-child(3) { animation-delay: .2s; }
-        .bars span:nth-child(4) { animation-delay: .3s; }
-        .bars span:nth-child(5) { animation-delay: .4s; }
+        .bars span:nth-child(2) {
+            animation-delay: .1s;
+        }
+
+        .bars span:nth-child(3) {
+            animation-delay: .2s;
+        }
+
+        .bars span:nth-child(4) {
+            animation-delay: .3s;
+        }
+
+        .bars span:nth-child(5) {
+            animation-delay: .4s;
+        }
 
         @keyframes bounce {
-            from { height: 25%; }
-            to { height: 100%; }
+            from {
+                height: 25%;
+            }
+
+            to {
+                height: 100%;
+            }
         }
 
         meter {
@@ -349,6 +370,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             .spinner,
             .audio-pulse,
             #voiceBar[data-state="hearing"] .bars span {
@@ -362,22 +384,28 @@
     <a class="skip" href="#main">Skip to main content</a>
 
     <!-- A. HEADER AND NAVIGATION -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-outline-variant transition-colors">
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-outline-variant transition-colors">
         <div class="h-20 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
             <!-- Left Brand cluster -->
             <div class="flex items-center gap-4 lg:gap-6 flex-shrink-0">
-                <a class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-1" href="#main">
-                    <div class="w-11 h-11 rounded-lg bg-primary flex items-center justify-center text-on-primary transition-transform group-hover:scale-105 shadow-sm">
+                <a class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-1"
+                    href="#main">
+                    <div
+                        class="w-11 h-11 rounded-lg bg-primary flex items-center justify-center text-on-primary transition-transform group-hover:scale-105 shadow-sm">
                         <span class="material-symbols-outlined text-[26px]">graphic_eq</span>
                     </div>
                     <div class="flex flex-col">
                         <div class="flex items-center gap-1.5">
-                            <span class="font-headline-md text-xl sm:text-2xl font-bold tracking-tight text-primary">SoundSlate</span>
+                            <span
+                                class="font-headline-md text-xl sm:text-2xl font-bold tracking-tight text-primary">SoundSlate</span>
                         </div>
-                        <span class="font-label-sm text-xs text-on-surface-variant font-medium">AI Visual Assistant</span>
+                        <span class="font-label-sm text-xs text-on-surface-variant font-medium">AI Visual
+                            Assistant</span>
                     </div>
                 </a>
-                <div class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded bg-surface-container border border-outline-variant">
+                <div
+                    class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded bg-surface-container border border-outline-variant">
                     <span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
                     <span class="font-label-sm text-xs font-semibold text-on-surface">Accessible Learning</span>
                 </div>
@@ -385,10 +413,15 @@
 
             <!-- Middle Navigation Links -->
             <nav class="hidden lg:flex items-center gap-1 h-full" aria-label="Main Navigation">
-                <a class="h-full flex items-center px-4 font-label-md text-sm font-bold text-on-surface border-b-2 border-primary bg-surface-container/40 transition-colors" href="#workspace">Workspace</a>
-                <a class="h-full flex items-center px-4 font-label-md text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#how-it-works-modal" onclick="document.getElementById('how-it-works-modal').classList.remove('hidden')">How it works</a>
-                <a class="h-full flex items-center px-4 font-label-md text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#shortcuts">Keyboard Shortcuts</a>
-                <a class="h-full flex items-center px-4 font-label-md text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#accessibility-footer">Accessibility</a>
+                <a class="h-full flex items-center px-4 font-label-md text-sm font-bold text-on-surface border-b-2 border-primary bg-surface-container/40 transition-colors"
+                    href="#workspace">Workspace</a>
+                <a class="h-full flex items-center px-4 font-label-md text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"
+                    href="#how-it-works-modal"
+                    onclick="document.getElementById('how-it-works-modal').classList.remove('hidden')">How it works</a>
+                <a class="h-full flex items-center px-4 font-label-md text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"
+                    href="#shortcuts">Keyboard Shortcuts</a>
+                <a class="h-full flex items-center px-4 font-label-md text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"
+                    href="#accessibility-footer">Accessibility</a>
             </nav>
 
             <!-- Right Controls: Theme & Text Sizing -->
@@ -396,9 +429,13 @@
                 <!-- Theme Selector -->
                 <div class="relative flex items-center">
                     <label class="sr-only" for="theme">Select colour theme</label>
-                    <div class="flex items-center h-11 pl-2.5 pr-2 rounded-lg bg-surface-container border border-outline-variant focus-within:ring-2 focus-within:ring-primary shadow-xs">
-                        <span class="material-symbols-outlined text-secondary mr-1.5 text-[20px]" aria-hidden="true">palette</span>
-                        <select class="bg-transparent font-label-sm text-xs sm:text-sm text-on-surface font-semibold focus:outline-none cursor-pointer pr-1" id="theme">
+                    <div
+                        class="flex items-center h-11 pl-2.5 pr-2 rounded-lg bg-surface-container border border-outline-variant focus-within:ring-2 focus-within:ring-primary shadow-xs">
+                        <span class="material-symbols-outlined text-secondary mr-1.5 text-[20px]"
+                            aria-hidden="true">palette</span>
+                        <select
+                            class="bg-transparent font-label-sm text-xs sm:text-sm text-on-surface font-semibold focus:outline-none cursor-pointer pr-1"
+                            id="theme">
                             <option value="cream">Soft cream (low glare)</option>
                             <option value="night">Bright yellow on black</option>
                             <option value="sunshine">Black on bright yellow</option>
@@ -410,16 +447,25 @@
                 </div>
 
                 <!-- Text-Size Controls (A- and A+) -->
-                <div aria-label="Text size" class="flex items-center rounded-lg border border-outline-variant bg-surface-container overflow-hidden shadow-xs" role="group">
-                    <button id="smallerBtn" aria-label="Make text smaller" class="w-10 sm:w-11 h-11 flex items-center justify-center font-bold text-sm sm:text-base text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary" type="button">A−</button>
+                <div aria-label="Text size"
+                    class="flex items-center rounded-lg border border-outline-variant bg-surface-container overflow-hidden shadow-xs"
+                    role="group">
+                    <button id="smallerBtn" aria-label="Make text smaller"
+                        class="w-10 sm:w-11 h-11 flex items-center justify-center font-bold text-sm sm:text-base text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                        type="button">A−</button>
                     <div class="w-[1px] h-6 bg-outline-variant" aria-hidden="true"></div>
-                    <button id="largerBtn" aria-label="Make text larger" class="w-10 sm:w-11 h-11 flex items-center justify-center font-bold text-sm sm:text-base text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary" type="button">A+</button>
+                    <button id="largerBtn" aria-label="Make text larger"
+                        class="w-10 sm:w-11 h-11 flex items-center justify-center font-bold text-sm sm:text-base text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                        type="button">A+</button>
                 </div>
 
                 <!-- Shortcuts badge -->
-                <div class="hidden 2xl:flex flex-col justify-center px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-right">
-                    <span class="font-label-sm text-[11px] leading-tight text-on-surface-variant"><kbd class="font-bold text-on-surface">Alt+T</kbd> Theme</span>
-                    <span class="font-label-sm text-[11px] leading-tight text-on-surface-variant"><kbd class="font-bold text-on-surface">Alt+Q</kbd> Question</span>
+                <div
+                    class="hidden 2xl:flex flex-col justify-center px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-right">
+                    <span class="font-label-sm text-[11px] leading-tight text-on-surface-variant"><kbd
+                            class="font-bold text-on-surface">Alt+T</kbd> Theme</span>
+                    <span class="font-label-sm text-[11px] leading-tight text-on-surface-variant"><kbd
+                            class="font-bold text-on-surface">Alt+Q</kbd> Question</span>
                 </div>
             </div>
         </div>
@@ -433,28 +479,40 @@
             <section aria-labelledby="hero-title" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
                 <!-- Left Column (60%) -->
                 <div class="lg:col-span-7 flex flex-col items-start gap-4">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant">
+                    <div
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant">
                         <span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
-                        <span class="font-label-md text-xs sm:text-sm font-bold text-on-surface">AI Visual Learning Assistant • WCAG 2.1 AAA Compliant</span>
+                        <span class="font-label-md text-xs sm:text-sm font-bold text-on-surface">AI Visual Learning
+                            Assistant • Built for accessibility</span>
                     </div>
 
-                    <h1 class="font-headline-xl text-3xl sm:text-4xl lg:text-5xl text-primary font-extrabold tracking-tight" id="hero-title">
-                        See the image. <br class="hidden sm:inline"/>
-                        <span class="text-secondary underline decoration-secondary-container decoration-4 underline-offset-8">Hear the meaning.</span>
+                    <h1 class="font-headline-xl text-3xl sm:text-4xl lg:text-5xl text-primary font-extrabold tracking-tight"
+                        id="hero-title">
+                        See the image. <br class="hidden sm:inline" />
+                        <span
+                            class="text-secondary underline decoration-secondary-container decoration-4 underline-offset-8">Hear
+                            the meaning.</span>
                     </h1>
 
                     <p class="font-body-lg text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                        Turn charts, diagrams and handwritten notes into accessible explanations you can listen to, explore and understand. Built with high contrast, acoustic sonifications, and conversational voice exploration.
+                        Turn charts, diagrams and handwritten notes into accessible explanations you can listen to,
+                        explore and understand. Built with high contrast, acoustic sonifications, and conversational
+                        voice exploration.
                     </p>
 
                     <!-- CTA Action Cluster -->
                     <div class="flex flex-wrap items-center gap-4 pt-2">
-                        <a id="heroStartBtn" class="h-13 sm:h-14 px-6 rounded-lg bg-primary text-on-primary font-label-lg text-base font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-md active:scale-[0.99]" href="#workspace">
+                        <a id="heroStartBtn"
+                            class="h-13 sm:h-14 px-6 rounded-lg bg-primary text-on-primary font-label-lg text-base font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-md active:scale-[0.99]"
+                            href="#workspace">
                             <span class="material-symbols-outlined text-[24px]">add_photo_alternate</span>
                             <span>Start with an image</span>
                             <span class="material-symbols-outlined text-[20px]">arrow_downward</span>
                         </a>
-                        <button id="heroHowBtn" class="h-13 sm:h-14 px-6 rounded-lg bg-surface-container border-2 border-primary text-on-surface font-label-lg text-base font-bold inline-flex items-center gap-2 hover:bg-surface-container-high transition-colors" onclick="document.getElementById('how-it-works-modal').classList.remove('hidden')" type="button">
+                        <button id="heroHowBtn"
+                            class="h-13 sm:h-14 px-6 rounded-lg bg-surface-container border-2 border-primary text-on-surface font-label-lg text-base font-bold inline-flex items-center gap-2 hover:bg-surface-container-high transition-colors"
+                            onclick="document.getElementById('how-it-works-modal').classList.remove('hidden')"
+                            type="button">
                             <span class="material-symbols-outlined text-[24px]">hearing</span>
                             <span>Explore how it works</span>
                         </button>
@@ -463,26 +521,33 @@
                     <!-- Live Status Pill -->
                     <div class="flex items-center gap-3 pt-2">
                         <span class="flex h-3 w-3 relative">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
                         </span>
-                        <span class="font-body-sm text-xs sm:text-sm text-on-surface-variant font-medium">Ready to assist • Realtime Gemini Vision analysis • Tactile display support</span>
+                        <span class="font-body-sm text-xs sm:text-sm text-on-surface-variant font-medium">Ready to
+                            assist •Image analysis with Google Gemini</span>
                     </div>
                 </div>
 
                 <!-- Right Column: Visual Sonification Panel -->
                 <div class="lg:col-span-5 w-full">
-                    <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm relative overflow-hidden">
+                    <div
+                        class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm relative overflow-hidden">
                         <div class="flex items-center justify-between pb-3 border-b border-outline-variant">
                             <div class="flex items-center gap-2">
                                 <span class="material-symbols-outlined text-secondary text-[24px]">graphic_eq</span>
-                                <span class="font-title-md text-base sm:text-lg font-bold text-on-surface">Sonification &amp; Spoken Insight</span>
+                                <span class="font-title-md text-base sm:text-lg font-bold text-on-surface">Sonification
+                                    &amp; Spoken Insight</span>
                             </div>
-                            <span class="px-2.5 py-1 rounded bg-surface-container-low font-label-sm text-xs font-bold text-secondary border border-outline-variant">Live Acoustic Output</span>
+                            <span
+                                class="px-2.5 py-1 rounded bg-surface-container-low font-label-sm text-xs font-bold text-secondary border border-outline-variant">Live
+                                Acoustic Output</span>
                         </div>
 
                         <!-- Acoustic Representation Container -->
-                        <div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col gap-3">
+                        <div
+                            class="p-4 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col gap-3">
                             <div class="flex items-center justify-between text-xs sm:text-sm">
                                 <span class="font-label-md font-bold text-on-surface flex items-center gap-1.5">
                                     <span class="material-symbols-outlined text-primary text-[20px]">bar_chart</span>
@@ -492,33 +557,48 @@
                             </div>
 
                             <!-- Stylized Soundwave and Frequency Bar Simulation -->
-                            <div class="w-full h-24 bg-surface-container-lowest rounded-md flex items-end justify-between px-4 py-2 gap-1.5 overflow-hidden border border-outline-variant/60" aria-hidden="true">
-                                <div class="w-2.5 bg-secondary rounded-t h-8 audio-pulse" style="animation-delay: 0.1s"></div>
-                                <div class="w-2.5 bg-secondary rounded-t h-12 audio-pulse" style="animation-delay: 0.3s"></div>
-                                <div class="w-2.5 bg-secondary rounded-t h-16 audio-pulse" style="animation-delay: 0.2s"></div>
-                                <div class="w-2.5 bg-primary rounded-t h-10 audio-pulse" style="animation-delay: 0.4s"></div>
-                                <div class="w-2.5 bg-primary rounded-t h-14 audio-pulse" style="animation-delay: 0.15s"></div>
-                                <div class="w-2.5 bg-primary rounded-t h-20 audio-pulse" style="animation-delay: 0.5s"></div>
-                                <div class="w-2.5 bg-secondary-container rounded-t h-12 audio-pulse" style="animation-delay: 0.25s"></div>
-                                <div class="w-2.5 bg-secondary-container rounded-t h-18 audio-pulse" style="animation-delay: 0.35s"></div>
-                                <div class="w-2.5 bg-secondary-container rounded-t h-22 audio-pulse" style="animation-delay: 0.6s"></div>
-                                <div class="w-2.5 bg-primary-container rounded-t h-11 audio-pulse" style="animation-delay: 0.2s"></div>
-                                <div class="w-2.5 bg-primary-container rounded-t h-15 audio-pulse" style="animation-delay: 0.45s"></div>
-                                <div class="w-2.5 bg-primary rounded-t h-24 audio-pulse" style="animation-delay: 0.55s"></div>
+                            <div class="w-full h-24 bg-surface-container-lowest rounded-md flex items-end justify-between px-4 py-2 gap-1.5 overflow-hidden border border-outline-variant/60"
+                                aria-hidden="true">
+                                <div class="w-2.5 bg-secondary rounded-t h-8 audio-pulse" style="animation-delay: 0.1s">
+                                </div>
+                                <div class="w-2.5 bg-secondary rounded-t h-12 audio-pulse"
+                                    style="animation-delay: 0.3s"></div>
+                                <div class="w-2.5 bg-secondary rounded-t h-16 audio-pulse"
+                                    style="animation-delay: 0.2s"></div>
+                                <div class="w-2.5 bg-primary rounded-t h-10 audio-pulse" style="animation-delay: 0.4s">
+                                </div>
+                                <div class="w-2.5 bg-primary rounded-t h-14 audio-pulse" style="animation-delay: 0.15s">
+                                </div>
+                                <div class="w-2.5 bg-primary rounded-t h-20 audio-pulse" style="animation-delay: 0.5s">
+                                </div>
+                                <div class="w-2.5 bg-secondary-container rounded-t h-12 audio-pulse"
+                                    style="animation-delay: 0.25s"></div>
+                                <div class="w-2.5 bg-secondary-container rounded-t h-18 audio-pulse"
+                                    style="animation-delay: 0.35s"></div>
+                                <div class="w-2.5 bg-secondary-container rounded-t h-22 audio-pulse"
+                                    style="animation-delay: 0.6s"></div>
+                                <div class="w-2.5 bg-primary-container rounded-t h-11 audio-pulse"
+                                    style="animation-delay: 0.2s"></div>
+                                <div class="w-2.5 bg-primary-container rounded-t h-15 audio-pulse"
+                                    style="animation-delay: 0.45s"></div>
+                                <div class="w-2.5 bg-primary rounded-t h-24 audio-pulse" style="animation-delay: 0.55s">
+                                </div>
                             </div>
 
                             <!-- Spoken Insight Speech Card -->
-                            <div class="p-3 rounded bg-surface-container-high border-l-4 border-secondary flex items-start gap-2.5">
-                                <span class="material-symbols-outlined text-secondary text-[22px] flex-shrink-0 mt-0.5">volume_up</span>
+                            <div
+                                class="p-3 rounded bg-surface-container-high border-l-4 border-secondary flex items-start gap-2.5">
+                                <span
+                                    class="material-symbols-outlined text-secondary text-[22px] flex-shrink-0 mt-0.5">volume_up</span>
                                 <p class="font-body-sm text-xs sm:text-sm text-on-surface">
-                                    <strong class="font-bold">Spoken Synthesis:</strong> &ldquo;Charts are parsed into structural coordinates. Soundwaves modulate pitch linearly with data height.&rdquo;
+                                    <strong class="font-bold">Spoken Synthesis:</strong> &ldquo;Charts are parsed into
+                                    structural coordinates. Soundwaves modulate pitch linearly with data height.&rdquo;
                                 </p>
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-xs">
-                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">touch_app</span> Haptic feedback ready</span>
-                            <span class="font-semibold text-primary">Spatial stereo audio 2.1</span>
+                            <span class="font-semibold text-primary">Pitch-mapped audio</span>
                         </div>
                     </div>
                 </div>
@@ -531,7 +611,8 @@
                         Your learning workspace
                     </h2>
                     <p class="font-body-md text-base text-on-surface-variant">
-                        Upload or photograph any visual diagram, review high-contrast optical extractions, configure vocal speed, and engage in step-by-step query exploration.
+                        Upload or photograph any visual diagram, review high-contrast optical extractions, configure
+                        vocal speed, and engage in step-by-step query exploration.
                     </p>
                 </div>
 
@@ -541,74 +622,102 @@
                     <div class="lg:col-span-8 flex flex-col gap-6">
 
                         <!-- SUB-SECTION 1: Add an image -->
-                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm" aria-labelledby="s1">
+                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm"
+                            aria-labelledby="s1">
                             <div class="flex items-center justify-between flex-wrap gap-2">
                                 <div class="flex items-center gap-2.5">
-                                    <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm" aria-hidden="true">1</span>
-                                    <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface" id="s1">Add an image</h3>
+                                    <span
+                                        class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm"
+                                        aria-hidden="true">1</span>
+                                    <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface" id="s1">Add
+                                        an image</h3>
                                 </div>
-                                <span class="font-label-sm text-xs px-2.5 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface font-semibold">
+                                <span
+                                    class="font-label-sm text-xs px-2.5 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface font-semibold">
                                     Supports JPG, PNG, WebP (Max 8MB)
                                 </span>
                             </div>
 
-                            <p class="font-body-md text-sm sm:text-base text-on-surface">Choose an image from your device or activate camera to capture live notes:</p>
+                            <p class="font-body-md text-sm sm:text-base text-on-surface">Choose an image from your
+                                device or activate camera to capture live notes:</p>
 
                             <!-- Dropzone & Camera Trigger Bar -->
-                            <div class="p-4 rounded-lg bg-surface-container-low border-2 border-dashed border-outline flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div
+                                class="p-4 rounded-lg bg-surface-container-low border-2 border-dashed border-outline flex flex-col sm:flex-row items-center justify-between gap-4">
                                 <div class="flex items-center gap-3 flex-1 min-w-0 w-full sm:w-auto">
-                                    <label for="file" class="h-12 px-5 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold inline-flex items-center justify-center cursor-pointer hover:opacity-90 flex-shrink-0 transition-opacity">
+                                    <label for="file"
+                                        class="h-12 px-5 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold inline-flex items-center justify-center cursor-pointer hover:opacity-90 flex-shrink-0 transition-opacity">
                                         <span class="material-symbols-outlined mr-2 text-[20px]">folder_open</span>
                                         Choose file
                                     </label>
-                                    <input id="file" type="file" accept="image/png,image/jpeg,image/webp" class="sr-only">
-                                    <span id="file-chosen-name" class="font-body-md text-sm text-on-surface font-semibold truncate flex-1">
+                                    <input id="file" type="file" accept="image/png,image/jpeg,image/webp"
+                                        class="sr-only">
+                                    <span id="file-chosen-name"
+                                        class="font-body-md text-sm text-on-surface font-semibold truncate flex-1">
                                         No file selected
                                     </span>
                                 </div>
 
-                                <button id="cameraBtn" type="button" class="h-12 px-5 rounded-lg bg-surface-container-high border-2 border-primary text-on-surface font-label-md text-sm font-bold flex items-center justify-center gap-2 hover:bg-surface-container transition-colors flex-shrink-0 w-full sm:w-auto">
-                                    <span class="material-symbols-outlined text-secondary text-[22px]">photo_camera</span>
+                                <button id="cameraBtn" type="button"
+                                    class="h-12 px-5 rounded-lg bg-surface-container-high border-2 border-primary text-on-surface font-label-md text-sm font-bold flex items-center justify-center gap-2 hover:bg-surface-container transition-colors flex-shrink-0 w-full sm:w-auto">
+                                    <span
+                                        class="material-symbols-outlined text-secondary text-[22px]">photo_camera</span>
                                     <span>Open camera</span>
                                 </button>
                                 <input id="cameraFallback" type="file" accept="image/*" capture="environment" hidden>
                             </div>
 
                             <!-- Live Camera Panel -->
-                            <div id="cameraPanel" class="p-4 rounded-lg bg-surface-container-high border-2 border-secondary flex flex-col gap-3" hidden role="region" aria-label="Camera viewfinder">
+                            <div id="cameraPanel"
+                                class="p-4 rounded-lg bg-surface-container-high border-2 border-secondary flex flex-col gap-3"
+                                hidden role="region" aria-label="Camera viewfinder">
                                 <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2 font-bold font-title-md text-base text-on-surface">
-                                        <span class="material-symbols-outlined text-secondary text-[24px]">videocam</span>
+                                    <div
+                                        class="flex items-center gap-2 font-bold font-title-md text-base text-on-surface">
+                                        <span
+                                            class="material-symbols-outlined text-secondary text-[24px]">videocam</span>
                                         Live Viewfinder
                                     </div>
-                                    <button id="closeCamBtn" type="button" class="h-9 px-3 rounded bg-surface-container border border-outline-variant font-label-md text-sm font-bold text-on-surface hover:bg-surface-container-low">
+                                    <button id="closeCamBtn" type="button"
+                                        class="h-9 px-3 rounded bg-surface-container border border-outline-variant font-label-md text-sm font-bold text-on-surface hover:bg-surface-container-low">
                                         Close camera &times;
                                     </button>
                                 </div>
 
-                                <video id="video" autoplay playsinline muted class="w-full max-h-[360px] bg-black rounded-lg border border-outline" aria-label="Live camera view"></video>
+                                <video id="video" autoplay playsinline muted
+                                    class="w-full max-h-[360px] bg-black rounded-lg border border-outline"
+                                    aria-label="Live camera view"></video>
 
                                 <div class="flex flex-wrap items-center gap-3 pt-1">
-                                    <button id="snapBtn" type="button" class="h-12 px-6 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold flex items-center gap-2 hover:opacity-90">
+                                    <button id="snapBtn" type="button"
+                                        class="h-12 px-6 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold flex items-center gap-2 hover:opacity-90">
                                         <span class="material-symbols-outlined text-[20px]">camera</span>
                                         Take photo
                                     </button>
-                                    <button id="flipBtn" type="button" class="h-12 px-5 rounded-lg bg-surface-container border border-outline font-label-md text-sm font-semibold text-on-surface hover:bg-surface-container-low">
+                                    <button id="flipBtn" type="button"
+                                        class="h-12 px-5 rounded-lg bg-surface-container border border-outline font-label-md text-sm font-semibold text-on-surface hover:bg-surface-container-low">
                                         <span class="material-symbols-outlined text-[20px]">cameraswitch</span>
                                         Switch camera
                                     </button>
-                                    <label class="flex items-center gap-2 font-body-sm text-sm text-on-surface cursor-pointer select-none ml-auto">
-                                        <input id="countdown" type="checkbox" checked class="w-5 h-5 rounded border-2 border-primary text-primary">
+                                    <label
+                                        class="flex items-center gap-2 font-body-sm text-sm text-on-surface cursor-pointer select-none ml-auto">
+                                        <input id="countdown" type="checkbox" checked
+                                            class="w-5 h-5 rounded border-2 border-primary text-primary">
                                         <span>3-second countdown</span>
                                     </label>
                                 </div>
                             </div>
 
                             <!-- Selected-Image Preview Box -->
-                            <div id="previewContainer" class="p-4 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col md:flex-row items-center gap-4" hidden>
-                                <div class="w-full md:w-80 h-56 rounded-md bg-surface-container-lowest border-2 border-outline-variant overflow-hidden flex items-center justify-center p-2 relative group">
-                                    <img id="preview" alt="Preview of the image you selected" class="max-w-full max-h-full object-contain rounded" hidden>
-                                    <div class="absolute bottom-2 right-2 bg-background/90 px-2 py-0.5 rounded text-[11px] font-mono font-bold text-on-surface border border-outline-variant" id="preview-filename">
+                            <div id="previewContainer"
+                                class="p-4 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col md:flex-row items-center gap-4"
+                                hidden>
+                                <div
+                                    class="w-full md:w-80 h-56 rounded-md bg-surface-container-lowest border-2 border-outline-variant overflow-hidden flex items-center justify-center p-2 relative group">
+                                    <img id="preview" alt="Preview of the image you selected"
+                                        class="max-w-full max-h-full object-contain rounded" hidden>
+                                    <div class="absolute bottom-2 right-2 bg-background/90 px-2 py-0.5 rounded text-[11px] font-mono font-bold text-on-surface border border-outline-variant"
+                                        id="preview-filename">
                                         image.png
                                     </div>
                                 </div>
@@ -617,39 +726,58 @@
                                 <div class="flex flex-col justify-between h-full gap-3 flex-1 w-full">
                                     <div class="flex flex-col gap-1">
                                         <div class="flex items-center gap-2">
-                                            <span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
-                                            <span class="font-title-md text-base font-bold text-on-surface">Image Loaded &amp; Ready</span>
+                                            <span
+                                                class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+                                            <span class="font-title-md text-base font-bold text-on-surface">Image Loaded
+                                                &amp; Ready</span>
                                         </div>
                                         <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">
-                                            Visual resolution and contrast verified. Ready for multimodal spatial breakdown and acoustic pitch sonification.
+                                            Visual resolution and contrast verified. Ready for multimodal spatial
+                                            breakdown and acoustic pitch sonification.
                                         </p>
                                     </div>
                                     <div class="flex flex-wrap items-center gap-2">
-                                        <span class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-xs font-semibold text-on-surface border border-outline-variant">Spatial Geometry</span>
-                                        <span class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-xs font-semibold text-on-surface border border-outline-variant">Gemini 1.5 Vision</span>
-                                        <span class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-xs font-semibold text-on-surface border border-outline-variant">Text &amp; Numbers</span>
+                                        <span
+                                            class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-xs font-semibold text-on-surface border border-outline-variant">Spatial
+                                            Geometry</span>
+                                        <span
+                                            class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-xs font-semibold text-on-surface border border-outline-variant">Gemini
+                                            1.5 Vision</span>
+                                        <span
+                                            class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-xs font-semibold text-on-surface border border-outline-variant">Text
+                                            &amp; Numbers</span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Privacy Notice Line -->
-                            <div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-xs sm:text-sm pt-1">
-                                <span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0">security</span>
-                                <span><strong>Privacy guarantee:</strong> Your diagram and questions are processed confidentially using Google Gemini Vision API. No images are permanently stored or indexed.</span>
+                            <div
+                                class="flex items-center gap-2 text-on-surface-variant font-body-sm text-xs sm:text-sm pt-1">
+                                <span
+                                    class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0">security</span>
+                                <span><strong>Privacy guarantee:</strong> Your diagram and questions are processed
+                                    confidentially using Google Gemini Vision API. No images are permanently stored or
+                                    indexed.</span>
                             </div>
                         </div>
 
                         <!-- SUB-SECTION 2: Describe it & Output Config -->
-                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm" aria-labelledby="s2">
+                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm"
+                            aria-labelledby="s2">
                             <div class="flex items-center justify-between flex-wrap gap-2">
                                 <div class="flex items-center gap-2.5">
-                                    <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm" aria-hidden="true">2</span>
-                                    <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface" id="s2">Describe &amp; Configure Voice</h3>
+                                    <span
+                                        class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm"
+                                        aria-hidden="true">2</span>
+                                    <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface" id="s2">
+                                        Describe &amp; Configure Voice</h3>
                                 </div>
 
                                 <div class="flex items-center gap-2">
-                                    <label class="font-label-md text-sm font-bold text-on-surface" for="lang">Language:</label>
-                                    <select id="lang" class="h-11 pl-3 pr-8 rounded-lg bg-surface-container-low border-2 border-outline text-on-surface font-label-md text-sm font-semibold cursor-pointer">
+                                    <label class="font-label-md text-sm font-bold text-on-surface"
+                                        for="lang">Language:</label>
+                                    <select id="lang"
+                                        class="h-11 pl-3 pr-8 rounded-lg bg-surface-container-low border-2 border-outline text-on-surface font-label-md text-sm font-semibold cursor-pointer">
                                         <option value="en" selected>English</option>
                                         <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)</option>
                                     </select>
@@ -658,33 +786,44 @@
 
                             <!-- Describe CTA + Status row -->
                             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                                <button id="describeBtn" type="button" class="h-14 px-8 rounded-lg bg-primary text-on-primary font-label-lg text-base font-bold flex items-center justify-center gap-3 hover:opacity-90 shadow-md transition-all active:scale-[0.99]">
+                                <button id="describeBtn" type="button"
+                                    class="h-14 px-8 rounded-lg bg-primary text-on-primary font-label-lg text-base font-bold flex items-center justify-center gap-3 hover:opacity-90 shadow-md transition-all active:scale-[0.99]">
                                     <span class="material-symbols-outlined text-[26px]">play_circle</span>
                                     <span>Describe image now</span>
                                 </button>
 
-                                <div id="statusRow" class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-low border border-outline-variant text-on-surface font-body-sm text-sm flex-1 min-h-[3.5rem]">
+                                <div id="statusRow"
+                                    class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-low border border-outline-variant text-on-surface font-body-sm text-sm flex-1 min-h-[3.5rem]">
                                     <span id="spinner" class="spinner" aria-hidden="true" hidden></span>
-                                    <span id="status" role="status" aria-live="polite" class="font-medium">Ready. Select an image and click Describe.</span>
-                                    <span id="timer" aria-hidden="true" class="ml-auto font-mono font-bold text-secondary"></span>
+                                    <span id="status" role="status" aria-live="polite" class="font-medium">Ready. Select
+                                        an image and click Describe.</span>
+                                    <span id="timer" aria-hidden="true"
+                                        class="ml-auto font-mono font-bold text-secondary"></span>
                                 </div>
                             </div>
 
                             <!-- Expandable Settings Accordion -->
-                            <details id="moreSettings" class="group border border-outline-variant rounded-lg bg-surface-container-low p-4">
-                                <summary class="font-title-md text-sm sm:text-base font-bold text-on-surface cursor-pointer flex items-center justify-between select-none list-none">
+                            <details id="moreSettings"
+                                class="group border border-outline-variant rounded-lg bg-surface-container-low p-4">
+                                <summary
+                                    class="font-title-md text-sm sm:text-base font-bold text-on-surface cursor-pointer flex items-center justify-between select-none list-none">
                                     <span class="flex items-center gap-2">
                                         <span class="material-symbols-outlined text-secondary text-[22px]">tune</span>
                                         Speech Synthesis &amp; Interaction Parameters
                                     </span>
-                                    <span class="material-symbols-outlined text-[24px] transition-transform group-open:rotate-180">expand_more</span>
+                                    <span
+                                        class="material-symbols-outlined text-[24px] transition-transform group-open:rotate-180">expand_more</span>
                                 </summary>
 
-                                <div class="pt-4 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-outline-variant mt-3">
+                                <div
+                                    class="pt-4 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-outline-variant mt-3">
                                     <!-- Speaking Speed -->
                                     <div class="flex flex-col gap-1.5">
-                                        <label for="rate" class="font-label-md text-xs sm:text-sm font-bold text-on-surface">Speaking speed (Audio Rate):</label>
-                                        <select id="rate" class="h-11 px-3 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-semibold">
+                                        <label for="rate"
+                                            class="font-label-md text-xs sm:text-sm font-bold text-on-surface">Speaking
+                                            speed (Audio Rate):</label>
+                                        <select id="rate"
+                                            class="h-11 px-3 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-semibold">
                                             <option value="0.8">Slow (0.8x)</option>
                                             <option value="1" selected>Normal (1.0x)</option>
                                             <option value="1.25">Fast (1.25x)</option>
@@ -694,8 +833,11 @@
 
                                     <!-- Text Style -->
                                     <div class="flex flex-col gap-1.5">
-                                        <label for="font" class="font-label-md text-xs sm:text-sm font-bold text-on-surface">Text style / Typography:</label>
-                                        <select id="font" class="h-11 px-3 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-semibold">
+                                        <label for="font"
+                                            class="font-label-md text-xs sm:text-sm font-bold text-on-surface">Text
+                                            style / Typography:</label>
+                                        <select id="font"
+                                            class="h-11 px-3 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-semibold">
                                             <option value="standard" selected>Standard typography</option>
                                             <option value="easy">Easy read (wider spacing)</option>
                                         </select>
@@ -703,16 +845,22 @@
 
                                     <!-- Auto-read Checkbox -->
                                     <div class="flex items-center gap-3 md:col-span-2 pt-1">
-                                        <input id="auto" type="checkbox" checked class="w-5 h-5 rounded border-2 border-primary text-primary cursor-pointer">
-                                        <label for="auto" class="font-label-md text-sm font-semibold text-on-surface cursor-pointer select-none">
-                                            Read the complete summary and conversational answers aloud automatically upon generation
+                                        <input id="auto" type="checkbox" checked
+                                            class="w-5 h-5 rounded border-2 border-primary text-primary cursor-pointer">
+                                        <label for="auto"
+                                            class="font-label-md text-sm font-semibold text-on-surface cursor-pointer select-none">
+                                            Read the complete summary and conversational answers aloud automatically
+                                            upon generation
                                         </label>
                                     </div>
 
                                     <!-- Voice Questions Settings -->
                                     <div class="flex flex-col gap-1.5">
-                                        <label for="voiceLang" class="font-label-md text-xs sm:text-sm font-bold text-on-surface">Spoken question language:</label>
-                                        <select id="voiceLang" class="h-11 px-3 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-semibold">
+                                        <label for="voiceLang"
+                                            class="font-label-md text-xs sm:text-sm font-bold text-on-surface">Spoken
+                                            question language:</label>
+                                        <select id="voiceLang"
+                                            class="h-11 px-3 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-semibold">
                                             <option value="auto" selected>Same as description language</option>
                                             <option value="en-IN">English (India)</option>
                                             <option value="en-US">English (US)</option>
@@ -721,28 +869,38 @@
                                     </div>
 
                                     <div class="flex flex-col gap-1.5">
-                                        <label for="voiceMethod" class="font-label-md text-xs sm:text-sm font-bold text-on-surface">Voice recognition method:</label>
-                                        <select id="voiceMethod" class="h-11 px-3 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-semibold">
-                                            <option value="auto" selected>Automatic (Browser first, Gemini backup)</option>
+                                        <label for="voiceMethod"
+                                            class="font-label-md text-xs sm:text-sm font-bold text-on-surface">Voice
+                                            recognition method:</label>
+                                        <select id="voiceMethod"
+                                            class="h-11 px-3 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-semibold">
+                                            <option value="auto" selected>Automatic (Browser first, Gemini backup)
+                                            </option>
                                             <option value="browser">Browser only (live speech text)</option>
                                             <option value="gemini">Gemini listens (high accuracy recording)</option>
                                         </select>
                                     </div>
 
                                     <div class="flex items-center gap-3 md:col-span-2">
-                                        <input id="readback" type="checkbox" checked class="w-5 h-5 rounded border-2 border-primary text-primary cursor-pointer">
-                                        <label for="readback" class="font-label-md text-sm font-semibold text-on-surface cursor-pointer select-none">
+                                        <input id="readback" type="checkbox" checked
+                                            class="w-5 h-5 rounded border-2 border-primary text-primary cursor-pointer">
+                                        <label for="readback"
+                                            class="font-label-md text-sm font-semibold text-on-surface cursor-pointer select-none">
                                             Repeat my question back before speaking the answer
                                         </label>
                                     </div>
 
                                     <!-- Mic Test Utility -->
-                                    <div class="md:col-span-2 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-outline-variant">
-                                        <span class="font-body-sm text-xs sm:text-sm text-on-surface-variant flex items-center gap-1.5">
-                                            <span class="material-symbols-outlined text-secondary text-[18px]">mic</span>
+                                    <div
+                                        class="md:col-span-2 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-outline-variant">
+                                        <span
+                                            class="font-body-sm text-xs sm:text-sm text-on-surface-variant flex items-center gap-1.5">
+                                            <span
+                                                class="material-symbols-outlined text-secondary text-[18px]">mic</span>
                                             Voice recognition: Web Speech API &amp; Gemini audio streaming
                                         </span>
-                                        <button id="testMicBtn" type="button" class="h-10 px-4 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-bold hover:bg-surface-container-high transition-colors">
+                                        <button id="testMicBtn" type="button"
+                                            class="h-10 px-4 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-bold hover:bg-surface-container-high transition-colors">
                                             Test microphone &amp; recognition
                                         </button>
                                     </div>
@@ -753,55 +911,75 @@
                     </div>
 
                     <!-- SUPPORTING SIDEBAR (Right 4 cols) -->
-                    <aside class="lg:col-span-4 flex flex-col gap-6 w-full" aria-label="Quick Guide and Settings Summary">
+                    <aside class="lg:col-span-4 flex flex-col gap-6 w-full"
+                        aria-label="Quick Guide and Settings Summary">
                         <!-- Quick Step Guide -->
-                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm">
+                        <div
+                            class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm">
                             <div class="flex items-center gap-2 border-b border-outline-variant pb-3">
                                 <span class="material-symbols-outlined text-secondary text-[24px]">explore</span>
                                 <h3 class="font-title-lg text-lg font-bold text-on-surface">Quick Step Guide</h3>
                             </div>
                             <ol class="flex flex-col gap-4">
                                 <li class="flex items-start gap-3">
-                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
+                                    <span
+                                        class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
                                     <div>
-                                        <h4 class="font-title-md text-sm font-bold text-on-surface">Add your diagram</h4>
-                                        <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Upload any graph or snap textbook diagrams using high-contrast camera auto-exposure.</p>
+                                        <h4 class="font-title-md text-sm font-bold text-on-surface">Add your diagram
+                                        </h4>
+                                        <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Upload any
+                                            graph or snap textbook diagrams using high-contrast camera auto-exposure.
+                                        </p>
                                     </div>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
+                                    <span
+                                        class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
                                     <div>
-                                        <h4 class="font-title-md text-sm font-bold text-on-surface">Generate audio description</h4>
-                                        <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">SoundSlate transcribes axes, data trends, legends, and comparative anomalies into clear spoken narration.</p>
+                                        <h4 class="font-title-md text-sm font-bold text-on-surface">Generate audio
+                                            description</h4>
+                                        <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">SoundSlate
+                                            transcribes axes, data trends, legends, and comparative anomalies into clear
+                                            spoken narration.</p>
                                     </div>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</span>
+                                    <span
+                                        class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</span>
                                     <div>
-                                        <h4 class="font-title-md text-sm font-bold text-on-surface">Ask &amp; sonify</h4>
-                                        <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Pose natural spoken questions, listen to the data plotted in acoustic frequencies, or quiz yourself.</p>
+                                        <h4 class="font-title-md text-sm font-bold text-on-surface">Ask &amp; sonify
+                                        </h4>
+                                        <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Pose natural
+                                            spoken questions, listen to the data plotted in acoustic frequencies, or
+                                            quiz yourself.</p>
                                     </div>
                                 </li>
                             </ol>
                         </div>
 
                         <!-- Active Configuration Summary Badge -->
-                        <div class="p-5 rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-2 shadow-xs">
-                            <span class="font-label-sm text-xs font-bold text-secondary uppercase tracking-wider">Active Configuration</span>
+                        <div
+                            class="p-5 rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-2 shadow-xs">
+                            <span class="font-label-sm text-xs font-bold text-secondary uppercase tracking-wider">Active
+                                Configuration</span>
                             <div class="grid grid-cols-2 gap-2 pt-1 font-body-sm text-xs sm:text-sm">
-                                <div class="p-2.5 rounded bg-surface-container flex flex-col border border-outline-variant/60">
+                                <div
+                                    class="p-2.5 rounded bg-surface-container flex flex-col border border-outline-variant/60">
                                     <span class="text-on-surface-variant text-[11px]">Speech Speed</span>
                                     <span id="config-rate" class="font-bold text-on-surface">Normal (1.0x)</span>
                                 </div>
-                                <div class="p-2.5 rounded bg-surface-container flex flex-col border border-outline-variant/60">
+                                <div
+                                    class="p-2.5 rounded bg-surface-container flex flex-col border border-outline-variant/60">
                                     <span class="text-on-surface-variant text-[11px]">Language</span>
                                     <span id="config-lang" class="font-bold text-on-surface">English</span>
                                 </div>
-                                <div class="p-2.5 rounded bg-surface-container flex flex-col border border-outline-variant/60">
+                                <div
+                                    class="p-2.5 rounded bg-surface-container flex flex-col border border-outline-variant/60">
                                     <span class="text-on-surface-variant text-[11px]">Auto-read</span>
                                     <span id="config-auto" class="font-bold text-on-surface">Enabled</span>
                                 </div>
-                                <div class="p-2.5 rounded bg-surface-container flex flex-col border border-outline-variant/60">
+                                <div
+                                    class="p-2.5 rounded bg-surface-container flex flex-col border border-outline-variant/60">
                                     <span class="text-on-surface-variant text-[11px]">Tone Palette</span>
                                     <span id="config-theme" class="font-bold text-on-surface">Soft Cream</span>
                                 </div>
@@ -809,11 +987,15 @@
                         </div>
 
                         <!-- Pro Shortcut Tip Box -->
-                        <div class="p-5 rounded-xl bg-surface-container-high border-l-4 border-primary flex items-start gap-3 shadow-xs">
-                            <span class="material-symbols-outlined text-primary text-[24px] flex-shrink-0 mt-0.5">tips_and_updates</span>
+                        <div
+                            class="p-5 rounded-xl bg-surface-container-high border-l-4 border-primary flex items-start gap-3 shadow-xs">
+                            <span
+                                class="material-symbols-outlined text-primary text-[24px] flex-shrink-0 mt-0.5">tips_and_updates</span>
                             <div>
                                 <p class="font-title-md text-sm font-bold text-on-surface">Pro Shortcut</p>
-                                <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Press <kbd class="px-1.5 py-0.5 rounded bg-surface-container font-mono font-bold text-on-surface border border-outline-variant">Alt + Q</kbd> at any time to instantly position cursor into Question Box.</p>
+                                <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Press <kbd
+                                        class="px-1.5 py-0.5 rounded bg-surface-container font-mono font-bold text-on-surface border border-outline-variant">Alt
+                                        + Q</kbd> at any time to instantly position cursor into Question Box.</p>
                             </div>
                         </div>
                     </aside>
@@ -823,21 +1005,27 @@
             <!-- F & G. RESULTS & STRUCTURED RESULTS SECTION -->
             <section id="result" aria-labelledby="resultTitle" class="flex flex-col gap-6 pt-6" hidden>
                 <!-- Results Header Card with Toolbar -->
-                <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm">
-                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border-b border-outline-variant pb-3">
+                <div
+                    class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm">
+                    <div
+                        class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border-b border-outline-variant pb-3">
                         <div>
-                            <h2 class="font-headline-lg text-2xl sm:text-3xl font-bold text-primary" id="resultTitle" tabindex="-1">
+                            <h2 class="font-headline-lg text-2xl sm:text-3xl font-bold text-primary" id="resultTitle"
+                                tabindex="-1">
                                 Results &amp; Audio Exploration
                             </h2>
                             <p class="font-body-md text-sm sm:text-base text-on-surface-variant">
-                                Full structured breakdown with tactile key values, statistical deltas, and sonification controls.
+                                Full structured breakdown with tactile key values, statistical deltas, and sonification
+                                controls.
                             </p>
                         </div>
 
                         <!-- Audio Status Indicator Pill -->
-                        <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-low border-2 border-secondary shadow-xs">
+                        <div
+                            class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-low border-2 border-secondary shadow-xs">
                             <span class="w-3 h-3 rounded-full bg-secondary animate-pulse"></span>
-                            <span id="audioStatusPill" class="font-label-md text-xs sm:text-sm font-bold text-on-surface">
+                            <span id="audioStatusPill"
+                                class="font-label-md text-xs sm:text-sm font-bold text-on-surface">
                                 Audio ready
                             </span>
                         </div>
@@ -845,42 +1033,51 @@
 
                     <!-- Audio Control Action Toolbar -->
                     <div aria-label="Listening controls" role="toolbar" class="flex flex-wrap items-center gap-2 pt-1">
-                        <button id="repeatBtn" type="button" aria-keyshortcuts="Alt+R" class="h-11 px-4 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-xs">
+                        <button id="repeatBtn" type="button" aria-keyshortcuts="Alt+R"
+                            class="h-11 px-4 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-xs">
                             <span class="material-symbols-outlined text-[18px]">replay</span>
                             <span>Repeat</span>
                         </button>
-                        <button id="moreBtn" type="button" aria-keyshortcuts="Alt+M" class="h-11 px-4 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-xs">
+                        <button id="moreBtn" type="button" aria-keyshortcuts="Alt+M"
+                            class="h-11 px-4 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-xs">
                             <span class="material-symbols-outlined text-[18px]">read_more</span>
                             <span>More detail</span>
                         </button>
-                        <button id="allBtn" type="button" aria-keyshortcuts="Alt+A" class="h-11 px-4 rounded-lg bg-surface-container-high border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container transition-colors">
+                        <button id="allBtn" type="button" aria-keyshortcuts="Alt+A"
+                            class="h-11 px-4 rounded-lg bg-surface-container-high border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container transition-colors">
                             <span class="material-symbols-outlined text-[18px]">record_voice_over</span>
                             <span>Read everything</span>
                         </button>
-                        <button id="soundBtn" type="button" aria-keyshortcuts="Alt+H" hidden class="h-11 px-4 rounded-lg bg-secondary text-on-primary font-label-md text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-xs">
+                        <button id="soundBtn" type="button" aria-keyshortcuts="Alt+H" hidden
+                            class="h-11 px-4 rounded-lg bg-secondary text-on-primary font-label-md text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-xs">
                             <span class="material-symbols-outlined text-[18px]">music_note</span>
                             <span>Hear chart as sound</span>
                         </button>
-                        <button id="interruptBtn" type="button" aria-keyshortcuts="Alt+Q" class="h-11 px-4 rounded-lg bg-error text-on-error font-label-md text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-xs">
+                        <button id="interruptBtn" type="button" aria-keyshortcuts="Alt+Q"
+                            class="h-11 px-4 rounded-lg bg-error text-on-error font-label-md text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all shadow-xs">
                             <span class="material-symbols-outlined text-[18px]">front_hand</span>
                             <span>Interrupt and ask</span>
                         </button>
 
                         <div class="h-6 w-0.5 bg-outline-variant hidden xl:block mx-1"></div>
 
-                        <button id="continueBtn" type="button" aria-keyshortcuts="Alt+C" hidden class="h-11 px-4 rounded-lg bg-surface-container-low border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container">
+                        <button id="continueBtn" type="button" aria-keyshortcuts="Alt+C" hidden
+                            class="h-11 px-4 rounded-lg bg-surface-container-low border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container">
                             <span class="material-symbols-outlined text-[18px]">play_arrow</span>
                             <span>Continue reading</span>
                         </button>
-                        <button id="stopBtn" type="button" aria-keyshortcuts="Alt+S" class="h-11 px-4 rounded-lg bg-surface-container-low border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container">
+                        <button id="stopBtn" type="button" aria-keyshortcuts="Alt+S"
+                            class="h-11 px-4 rounded-lg bg-surface-container-low border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container">
                             <span class="material-symbols-outlined text-[18px]">stop</span>
                             <span>Stop</span>
                         </button>
-                        <button id="copyBtn" type="button" class="h-11 px-4 rounded-lg bg-surface-container-low border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container">
+                        <button id="copyBtn" type="button"
+                            class="h-11 px-4 rounded-lg bg-surface-container-low border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container">
                             <span class="material-symbols-outlined text-[18px]">content_copy</span>
                             <span>Copy description</span>
                         </button>
-                        <button id="saveBtn" type="button" class="h-11 px-4 rounded-lg bg-surface-container-low border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container">
+                        <button id="saveBtn" type="button"
+                            class="h-11 px-4 rounded-lg bg-surface-container-low border border-outline text-on-surface font-label-md text-sm font-bold inline-flex items-center gap-2 hover:bg-surface-container">
                             <span class="material-symbols-outlined text-[18px]">download</span>
                             <span>Save study notes</span>
                         </button>
@@ -890,51 +1087,72 @@
                 </div>
 
                 <!-- ASK A QUESTION ABOUT THIS IMAGE PANEL -->
-                <div class="p-6 rounded-xl bg-surface-container-high border-2 border-secondary flex flex-col gap-4 shadow-sm" aria-labelledby="askTitle">
+                <div class="p-6 rounded-xl bg-surface-container-high border-2 border-secondary flex flex-col gap-4 shadow-sm"
+                    aria-labelledby="askTitle">
                     <div class="flex items-center justify-between flex-wrap gap-2">
                         <div class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-secondary text-[24px]">chat_bubble</span>
-                            <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface" id="askTitle">Ask a question about this image</h3>
+                            <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface" id="askTitle">Ask a
+                                question about this image</h3>
                         </div>
-                        <span class="font-label-sm text-xs text-on-surface-variant font-semibold">Speak or type your query • Alt + Q</span>
+                        <span class="font-label-sm text-xs text-on-surface-variant font-semibold">Speak or type your
+                            query • Alt + Q</span>
                     </div>
 
                     <!-- Question Input Row -->
                     <div class="flex flex-col sm:flex-row items-stretch gap-3">
                         <div class="relative flex-1">
-                            <input id="question" type="text" maxlength="500" autocomplete="off" placeholder="e.g. Which country experienced the greatest growth between 1980 and 2000?" class="w-full h-14 pl-4 pr-12 rounded-lg bg-surface-container-low border-2 border-outline text-on-surface font-body-lg text-base sm:text-lg placeholder:text-outline font-medium focus:ring-2 focus:ring-primary focus:outline-none">
-                            <span class="absolute right-3.5 top-4 material-symbols-outlined text-outline pointer-events-none" aria-hidden="true">help</span>
+                            <input id="question" type="text" maxlength="500" autocomplete="off"
+                                placeholder="e.g. Which country experienced the greatest growth between 1980 and 2000?"
+                                class="w-full h-14 pl-4 pr-12 rounded-lg bg-surface-container-low border-2 border-outline text-on-surface font-body-lg text-base sm:text-lg placeholder:text-outline font-medium focus:ring-2 focus:ring-primary focus:outline-none">
+                            <span
+                                class="absolute right-3.5 top-4 material-symbols-outlined text-outline pointer-events-none"
+                                aria-hidden="true">help</span>
                         </div>
-                        <button id="askBtn" type="button" class="h-14 px-6 rounded-lg bg-primary text-on-primary font-label-lg text-base font-bold flex items-center justify-center gap-2 hover:opacity-90 flex-shrink-0 shadow-sm transition-opacity">
+                        <button id="askBtn" type="button"
+                            class="h-14 px-6 rounded-lg bg-primary text-on-primary font-label-lg text-base font-bold flex items-center justify-center gap-2 hover:opacity-90 flex-shrink-0 shadow-sm transition-opacity">
                             <span class="material-symbols-outlined text-[20px]">send</span>
                             <span>Ask</span>
                         </button>
-                        <button id="listenBtn" type="button" class="h-14 px-6 rounded-lg bg-secondary text-on-primary font-label-lg text-base font-bold flex items-center justify-center gap-2 hover:opacity-90 flex-shrink-0 shadow-sm transition-opacity">
+                        <button id="listenBtn" type="button"
+                            class="h-14 px-6 rounded-lg bg-secondary text-on-primary font-label-lg text-base font-bold flex items-center justify-center gap-2 hover:opacity-90 flex-shrink-0 shadow-sm transition-opacity">
                             <span class="material-symbols-outlined text-[20px]">mic</span>
                             <span>Ask by voice</span>
                         </button>
                     </div>
 
                     <!-- Suggested Inquiry Chips -->
-                    <div class="chips flex flex-wrap items-center gap-2 pt-1" role="group" aria-label="Suggested questions">
-                        <span class="font-label-md text-xs sm:text-sm font-bold text-on-surface-variant mr-1">Suggested inquiries:</span>
-                        <button type="button" class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors flex items-center gap-1.5" data-q="Explain this in simpler words.">
+                    <div class="chips flex flex-wrap items-center gap-2 pt-1" role="group"
+                        aria-label="Suggested questions">
+                        <span class="font-label-md text-xs sm:text-sm font-bold text-on-surface-variant mr-1">Suggested
+                            inquiries:</span>
+                        <button type="button"
+                            class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors flex items-center gap-1.5"
+                            data-q="Explain this in simpler words.">
                             <span class="material-symbols-outlined text-[16px] text-secondary">bolt</span>
                             Explain simply
                         </button>
-                        <button type="button" class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors" data-q="What are the biggest and smallest values?">
+                        <button type="button"
+                            class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors"
+                            data-q="What are the biggest and smallest values?">
                             <span class="material-symbols-outlined text-[16px] text-secondary">compare_arrows</span>
                             Biggest and smallest
                         </button>
-                        <button type="button" class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors" data-q="Describe the layout: where is everything on the image?">
+                        <button type="button"
+                            class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors"
+                            data-q="Describe the layout: where is everything on the image?">
                             <span class="material-symbols-outlined text-[16px] text-secondary">view_agenda</span>
                             Describe the layout
                         </button>
-                        <button type="button" class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors" data-q="What is unclear or might be wrong in your description?">
+                        <button type="button"
+                            class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors"
+                            data-q="What is unclear or might be wrong in your description?">
                             <span class="material-symbols-outlined text-[16px] text-secondary">warning</span>
                             What might be wrong?
                         </button>
-                        <button type="button" class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors" data-q="Quiz me: ask me one question about this image to test my understanding, then wait for my answer.">
+                        <button type="button"
+                            class="chip h-9 px-3 rounded-full bg-surface-container border border-outline-variant font-label-md text-xs sm:text-sm font-bold text-on-surface hover:border-primary hover:bg-surface-container-high transition-colors"
+                            data-q="Quiz me: ask me one question about this image to test my understanding, then wait for my answer.">
                             <span class="material-symbols-outlined text-[16px] text-secondary">psychology</span>
                             Quiz me
                         </button>
@@ -949,28 +1167,35 @@
                     <!-- Left Column: Summary, Details, Trends (7 cols) -->
                     <div class="lg:col-span-7 flex flex-col gap-6">
                         <!-- Summary Block -->
-                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-3 shadow-sm">
+                        <div
+                            class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-3 shadow-sm">
                             <div class="flex items-center gap-2 border-b border-outline-variant pb-2.5">
                                 <span class="material-symbols-outlined text-secondary text-[24px]">summarize</span>
                                 <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface">Summary</h3>
                             </div>
-                            <p id="summary" class="font-body-lg text-base sm:text-lg text-on-surface leading-relaxed"></p>
+                            <p id="summary" class="font-body-lg text-base sm:text-lg text-on-surface leading-relaxed">
+                            </p>
                         </div>
 
                         <!-- Details & Visual Structure -->
-                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm">
+                        <div
+                            class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm">
                             <div class="flex items-center gap-2 border-b border-outline-variant pb-2.5">
                                 <span class="material-symbols-outlined text-secondary text-[24px]">list_alt</span>
-                                <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface">Details &amp; Visual Structure</h3>
+                                <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface">Details &amp;
+                                    Visual Structure</h3>
                             </div>
-                            <ul id="details" class="flex flex-col gap-3 font-body-md text-sm sm:text-base text-on-surface"></ul>
+                            <ul id="details"
+                                class="flex flex-col gap-3 font-body-md text-sm sm:text-base text-on-surface"></ul>
                         </div>
 
                         <!-- Trend & Comparative Patterns -->
-                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-3 shadow-sm">
+                        <div
+                            class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-3 shadow-sm">
                             <div class="flex items-center gap-2 border-b border-outline-variant pb-2.5">
                                 <span class="material-symbols-outlined text-secondary text-[24px]">insights</span>
-                                <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface">Trend &amp; Comparative Patterns</h3>
+                                <h3 class="font-title-lg text-lg sm:text-xl font-bold text-on-surface">Trend &amp;
+                                    Comparative Patterns</h3>
                             </div>
                             <p id="trend" class="font-body-md text-sm sm:text-base text-on-surface leading-relaxed"></p>
                         </div>
@@ -979,29 +1204,41 @@
                     <!-- Right Column: Key Values, Table Matrix, Confidence (5 cols) -->
                     <div class="lg:col-span-5 flex flex-col gap-6">
                         <!-- Key Values Structured Card -->
-                        <div class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm">
+                        <div
+                            class="p-6 rounded-xl bg-surface-container border-2 border-outline-variant flex flex-col gap-4 shadow-sm">
                             <div class="flex items-center justify-between border-b border-outline-variant pb-2.5">
                                 <div class="flex items-center gap-2">
                                     <span class="material-symbols-outlined text-secondary text-[24px]">pin</span>
-                                    <h3 class="font-title-lg text-lg font-bold text-on-surface">Key Values Breakdown</h3>
+                                    <h3 class="font-title-lg text-lg font-bold text-on-surface">Key Values Breakdown
+                                    </h3>
                                 </div>
-                                <span class="font-label-sm text-xs font-mono text-on-surface-variant font-bold">Extracted Facts</span>
+                                <span
+                                    class="font-label-sm text-xs font-mono text-on-surface-variant font-bold">Extracted
+                                    Facts</span>
                             </div>
-                            <ul id="values" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-body-sm text-xs sm:text-sm"></ul>
+                            <ul id="values"
+                                class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-body-sm text-xs sm:text-sm"></ul>
                         </div>
 
                         <!-- Accessible Tabular Data Matrix -->
-                        <div id="tableContainer" class="p-5 rounded-xl bg-surface-container-low border-2 border-outline-variant flex flex-col gap-3 overflow-x-auto shadow-xs" hidden>
+                        <div id="tableContainer"
+                            class="p-5 rounded-xl bg-surface-container-low border-2 border-outline-variant flex flex-col gap-3 overflow-x-auto shadow-xs"
+                            hidden>
                             <div class="flex items-center justify-between pb-1">
-                                <h4 class="font-title-md text-sm sm:text-base font-bold text-on-surface flex items-center gap-1.5">
-                                    <span class="material-symbols-outlined text-secondary text-[20px]">table_chart</span>
+                                <h4
+                                    class="font-title-md text-sm sm:text-base font-bold text-on-surface flex items-center gap-1.5">
+                                    <span
+                                        class="material-symbols-outlined text-secondary text-[20px]">table_chart</span>
                                     Tabular Data Matrix
                                 </h4>
-                                <span class="font-label-sm text-xs text-on-surface-variant">Extracted labels &amp; metrics</span>
+                                <span class="font-label-sm text-xs text-on-surface-variant">Extracted labels &amp;
+                                    metrics</span>
                             </div>
-                            <table class="w-full text-left font-body-sm text-xs sm:text-sm border-collapse" aria-label="Extracted tabular data from chart">
+                            <table class="w-full text-left font-body-sm text-xs sm:text-sm border-collapse"
+                                aria-label="Extracted tabular data from chart">
                                 <thead>
-                                    <tr class="border-b-2 border-primary bg-surface-container font-label-md text-primary font-bold">
+                                    <tr
+                                        class="border-b-2 border-primary bg-surface-container font-label-md text-primary font-bold">
                                         <th scope="col" class="py-2 px-3">Item / Label</th>
                                         <th scope="col" class="py-2 px-3">Value</th>
                                     </tr>
@@ -1011,18 +1248,22 @@
                         </div>
 
                         <!-- Confidence & Extraction Notes -->
-                        <div class="p-5 rounded-xl bg-surface-container border border-outline-variant flex flex-col gap-2">
-                            <div class="flex items-center gap-2 font-title-md text-sm sm:text-base font-bold text-on-surface">
+                        <div
+                            class="p-5 rounded-xl bg-surface-container border border-outline-variant flex flex-col gap-2">
+                            <div
+                                class="flex items-center gap-2 font-title-md text-sm sm:text-base font-bold text-on-surface">
                                 <span class="material-symbols-outlined text-secondary text-[20px]">fact_check</span>
                                 Confidence &amp; Extraction Note
                             </div>
-                            <p id="notes" class="font-body-sm text-xs sm:text-sm text-on-surface-variant leading-relaxed"></p>
+                            <p id="notes"
+                                class="font-body-sm text-xs sm:text-sm text-on-surface-variant leading-relaxed"></p>
                         </div>
 
                         <!-- Action Export Buttons & Metadata -->
                         <div class="flex flex-col gap-2.5 pt-1">
                             <p class="font-body-sm text-xs text-on-surface-variant">
-                                <strong>Please note:</strong> AI descriptions and answers can contain mistakes. For important numbers, confirm with a teacher or verify the original chart.
+                                <strong>Please note:</strong> AI descriptions and answers can contain mistakes. For
+                                important numbers, confirm with a teacher or verify the original chart.
                             </p>
                             <p id="modelUsed" class="font-body-sm text-xs text-on-surface-variant font-mono"></p>
                         </div>
@@ -1041,16 +1282,19 @@
                 </div>
                 <div class="flex flex-col flex-1 min-w-0">
                     <p id="voiceState" class="font-headline-md text-base sm:text-lg font-bold text-secondary m-0"></p>
-                    <p id="voiceHeard" class="font-body-lg text-sm sm:text-base font-medium m-0 min-h-[1.5em] truncate"></p>
+                    <p id="voiceHeard" class="font-body-lg text-sm sm:text-base font-medium m-0 min-h-[1.5em] truncate">
+                    </p>
                     <meter id="level" min="0" max="1" value="0" aria-label="Microphone level" class="my-1"></meter>
                     <p id="voiceHint" class="font-body-sm text-xs text-on-surface-variant m-0"></p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <button id="vDone" type="button" class="h-11 px-5 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold hover:opacity-90 transition-opacity">
+                <button id="vDone" type="button"
+                    class="h-11 px-5 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold hover:opacity-90 transition-opacity">
                     Done speaking
                 </button>
-                <button id="vCancel" type="button" class="h-11 px-4 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-bold hover:bg-surface-container-high transition-colors">
+                <button id="vCancel" type="button"
+                    class="h-11 px-4 rounded-lg bg-surface-container border border-outline text-on-surface font-label-md text-sm font-bold hover:bg-surface-container-high transition-colors">
                     Cancel
                 </button>
             </div>
@@ -1058,21 +1302,27 @@
     </div>
 
     <!-- HOW IT WORKS MODAL -->
-    <div id="how-it-works-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="w-full max-w-2xl bg-background p-6 sm:p-8 rounded-xl border-2 border-primary shadow-2xl flex flex-col gap-5 max-h-[90vh] overflow-y-auto">
+    <div id="how-it-works-modal"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs"
+        role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div
+            class="w-full max-w-2xl bg-background p-6 sm:p-8 rounded-xl border-2 border-primary shadow-2xl flex flex-col gap-5 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between border-b border-outline-variant pb-3">
                 <div class="flex items-center gap-2.5 font-headline-md text-xl sm:text-2xl text-primary font-bold">
                     <span class="material-symbols-outlined text-secondary text-[28px]">info</span>
                     <h2 id="modal-title">How SoundSlate Empowers Non-Visual Learning</h2>
                 </div>
-                <button type="button" aria-label="Close dialog" class="w-9 h-9 rounded-full bg-surface-container text-on-surface font-bold text-xl flex items-center justify-center hover:bg-surface-container-high transition-colors" onclick="document.getElementById('how-it-works-modal').classList.add('hidden')">
+                <button type="button" aria-label="Close dialog"
+                    class="w-9 h-9 rounded-full bg-surface-container text-on-surface font-bold text-xl flex items-center justify-center hover:bg-surface-container-high transition-colors"
+                    onclick="document.getElementById('how-it-works-modal').classList.add('hidden')">
                     &times;
                 </button>
             </div>
 
             <div class="flex flex-col gap-4 font-body-md text-sm sm:text-base text-on-surface">
                 <p>
-                    SoundSlate eliminates visual learning barriers by acting as an intelligent acoustic interpreter between complex statistical figures and non-visual cognitive understanding.
+                    SoundSlate eliminates visual learning barriers by acting as an intelligent acoustic interpreter
+                    between complex statistical figures and non-visual cognitive understanding.
                 </p>
 
                 <div class="p-3.5 rounded-lg bg-surface-container border border-outline-variant flex flex-col gap-1">
@@ -1080,7 +1330,8 @@
                         <span class="material-symbols-outlined text-[20px] text-secondary">timeline</span>
                         1. Tactile &amp; Spatial Translation:
                     </strong>
-                    <span class="text-on-surface-variant">Charts are parsed into structural coordinates rather than generic alt-text, delivering precise axes, ranges, and legends in an organized hierarchy.</span>
+                    <span class="text-on-surface-variant">Charts are parsed into structural coordinates rather than
+                        generic alt-text, delivering precise axes, ranges, and legends in an organized hierarchy.</span>
                 </div>
 
                 <div class="p-3.5 rounded-lg bg-surface-container border border-outline-variant flex flex-col gap-1">
@@ -1088,7 +1339,9 @@
                         <span class="material-symbols-outlined text-[20px] text-secondary">equalizer</span>
                         2. Continuous Acoustic Sonification:
                     </strong>
-                    <span class="text-on-surface-variant">Audio oscillators modulate frequencies linearly according to bar heights and trend lines, enabling rapid mental graph comprehension without reading thousands of words.</span>
+                    <span class="text-on-surface-variant">Audio oscillators modulate frequencies linearly according to
+                        bar heights and trend lines, enabling rapid mental graph comprehension without reading thousands
+                        of words.</span>
                 </div>
 
                 <div class="p-3.5 rounded-lg bg-surface-container border border-outline-variant flex flex-col gap-1">
@@ -1096,12 +1349,15 @@
                         <span class="material-symbols-outlined text-[20px] text-secondary">record_voice_over</span>
                         3. Conversational Socratic Dialogue:
                     </strong>
-                    <span class="text-on-surface-variant">Ask spoken follow-up inquiries to interrogate specific years, calculate percentage changes, check outliers, or generate practice quizzes.</span>
+                    <span class="text-on-surface-variant">Ask spoken follow-up inquiries to interrogate specific years,
+                        calculate percentage changes, check outliers, or generate practice quizzes.</span>
                 </div>
             </div>
 
             <div class="flex justify-end pt-3 border-t border-outline-variant">
-                <button type="button" class="h-11 px-6 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold hover:opacity-90 transition-opacity" onclick="document.getElementById('how-it-works-modal').classList.add('hidden')">
+                <button type="button"
+                    class="h-11 px-6 rounded-lg bg-primary text-on-primary font-label-md text-sm font-bold hover:opacity-90 transition-opacity"
+                    onclick="document.getElementById('how-it-works-modal').classList.add('hidden')">
                     Got it, return to workspace
                 </button>
             </div>
@@ -1109,40 +1365,59 @@
     </div>
 
     <!-- FOOTER WITH ACCESSIBILITY & SHORTCUTS GUIDE -->
-    <footer id="shortcuts" class="w-full bg-surface-container-low border-t border-outline-variant mt-16 transition-colors">
+    <footer id="shortcuts"
+        class="w-full bg-surface-container-low border-t border-outline-variant mt-16 transition-colors">
         <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <!-- Keyboard Shortcuts Box -->
             <div class="p-6 rounded-xl bg-surface-container border border-outline-variant mb-8 shadow-xs">
                 <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary flex-shrink-0">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary flex-shrink-0">
                             <span class="material-symbols-outlined text-[24px]">keyboard</span>
                         </div>
                         <div>
-                            <h2 class="font-title-md text-base sm:text-lg text-on-surface font-bold">Keyboard Shortcuts Guide</h2>
-                            <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Quick screen-reader friendly hotkeys active everywhere</p>
+                            <h2 class="font-title-md text-base sm:text-lg text-on-surface font-bold">Keyboard Shortcuts
+                                Guide</h2>
+                            <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Quick screen-reader
+                                friendly hotkeys active everywhere</p>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap items-center gap-2">
-                        <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
-                            <kbd class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt + R</kbd>
+                        <div
+                            class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
+                            <kbd
+                                class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt
+                                + R</kbd>
                             <span class="font-label-md text-xs sm:text-sm text-on-surface">Repeat Audio</span>
                         </div>
-                        <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
-                            <kbd class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt + M</kbd>
+                        <div
+                            class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
+                            <kbd
+                                class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt
+                                + M</kbd>
                             <span class="font-label-md text-xs sm:text-sm text-on-surface">More Detail</span>
                         </div>
-                        <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
-                            <kbd class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt + Q</kbd>
+                        <div
+                            class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
+                            <kbd
+                                class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt
+                                + Q</kbd>
                             <span class="font-label-md text-xs sm:text-sm text-on-surface">Interrupt &amp; Ask</span>
                         </div>
-                        <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
-                            <kbd class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt + T</kbd>
+                        <div
+                            class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
+                            <kbd
+                                class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt
+                                + T</kbd>
                             <span class="font-label-md text-xs sm:text-sm text-on-surface">Switch Theme</span>
                         </div>
-                        <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
-                            <kbd class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt + S</kbd>
+                        <div
+                            class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant">
+                            <kbd
+                                class="px-2 py-0.5 rounded bg-surface-container-low font-mono text-xs font-bold text-on-surface border border-outline-variant">Alt
+                                + S</kbd>
                             <span class="font-label-md text-xs sm:text-sm text-on-surface">Stop</span>
                         </div>
                     </div>
@@ -1150,13 +1425,17 @@
             </div>
 
             <!-- Accessibility Compliance Line -->
-            <div id="accessibility-footer" class="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-outline-variant text-center md:text-left">
+            <div id="accessibility-footer"
+                class="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-outline-variant text-center md:text-left">
                 <div class="flex items-center gap-3 flex-wrap justify-center md:justify-start">
-                    <div class="flex items-center gap-1.5 px-3 py-1 rounded bg-surface-container border border-outline-variant">
+                    <div
+                        class="flex items-center gap-1.5 px-3 py-1 rounded bg-surface-container border border-outline-variant">
                         <span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
-                        <span class="font-label-md text-xs sm:text-sm text-on-surface font-bold">WCAG 2.1 Level AAA Compliant</span>
+                        <span class="font-label-md text-xs sm:text-sm text-on-surface font-bold">WCAG 2.1 Level AAA
+                            Compliant</span>
                     </div>
-                    <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Engineered for tactile displays, screen readers, and low-glare visual comfort.</p>
+                    <p class="font-body-sm text-xs sm:text-sm text-on-surface-variant">Engineered for tactile displays,
+                        screen readers, and low-glare visual comfort.</p>
                 </div>
                 <div class="font-body-sm text-xs sm:text-sm text-on-surface-variant">
                     <p>&copy; SoundSlate. All assistive learning rights reserved.</p>
